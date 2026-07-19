@@ -122,7 +122,7 @@ input {
 //styles for forgot password link
 .forgot-password {
     color: v.$text-primary;
-    font-size: map.get(v.$font-size, caption);
+    font-size: map.get(v.$font-size, subtitle);
     cursor: pointer;
 }
 

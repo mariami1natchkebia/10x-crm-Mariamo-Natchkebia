@@ -134,7 +134,7 @@ input {
 
 .forgot-password {
   color: #000000;
-  font-size: clamp(0.996rem, 0.938rem + 0.236vw, 1.2rem);
+  font-size: clamp(1.162rem, 1.095rem + 0.276vw, 1.4rem);
   cursor: pointer;
 }
 
