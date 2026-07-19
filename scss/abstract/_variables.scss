@@ -1,0 +1,43 @@
+//background colors
+$bg-main: #e8e8e8;
+$bg-primary: #282828;
+$bg-secondary:#202020;
+
+//text colors
+$text-primary: #E0E0E0;
+$text-secondary: #898989; 
+
+//active-inactive colors
+$active: #FFFFFF; 
+$inactive: #898989;
+
+//error-success colors
+$error: #ED4337;
+$success: #10B981;
+
+//button colors
+$button-primary: #4e82f3;
+$button-secondary: #9babce;
+
+//typography
+$font-base: "Inter", sans-serif;
+$font-mono: "Roboto Mono", monospace;
+
+$font-size: (
+  heading: 2rem,
+  small-heading: 1.8rem,
+  paragraph: 1.6rem,
+  subtitle: clamp(1.162rem, 1.095rem + 0.276vw, 1.4rem),
+  caption: clamp(0.996rem, 0.938rem + 0.236vw, 1.2rem),
+);
+
+$font-weight: (
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  black: 900,
+);
+
+//breakpoint
+$bp-desktop: 1200px;
