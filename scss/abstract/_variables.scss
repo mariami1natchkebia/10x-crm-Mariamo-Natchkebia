@@ -1,23 +1,28 @@
-//background colors
-$bg-main: #ffffff;
-$bg-primary: #282828;
-$bg-secondary:#202020;
+@use 'sass:map';
 
-//text colors
-$text-primary: #000000;
-$text-secondary: #898989; 
+:root {
+    --bg-main: #ffffff;
+    --bg-primary: #282828;
+    --bg-secondary: #202020;
+    --text-primary: #000000;
+    --text-secondary: #898989; 
+    --active: #FFFFFF; 
+    --inactive: #898989;
+    --error: #ED4337;
+    --success: #10B981;
+    --button-primary: #4e82f3;
+    --button-secondary: #9babce;
+}
 
-//active-inactive colors
-$active: #FFFFFF; 
-$inactive: #898989;
-
-//error-success colors
-$error: #ED4337;
-$success: #10B981;
-
-//button colors
-$button-primary: #4e82f3;
-$button-secondary: #9babce;
+.darkmode {
+    --bg-main: #383838;
+    --text-primary: #929292;
+    --text-secondary: #b4b4b4; 
+    --active: #FFFFFF; 
+    --inactive: #898989;
+    --button-primary: #4e82f3;
+    --button-secondary: #9babce;
+}
 
 //typography
 $font-base: "Inter", sans-serif;

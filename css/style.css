@@ -1,3 +1,27 @@
+:root {
+  --bg-main: #ffffff;
+  --bg-primary: #282828;
+  --bg-secondary: #202020;
+  --text-primary: #000000;
+  --text-secondary: #898989;
+  --active: #FFFFFF;
+  --inactive: #898989;
+  --error: #ED4337;
+  --success: #10B981;
+  --button-primary: #4e82f3;
+  --button-secondary: #9babce;
+}
+
+.darkmode {
+  --bg-main: #383838;
+  --text-primary: #929292;
+  --text-secondary: #b4b4b4;
+  --active: #FFFFFF;
+  --inactive: #898989;
+  --button-primary: #4e82f3;
+  --button-secondary: #9babce;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -27,9 +51,34 @@ body, button {
   font-weight: 700;
 }
 
+#theme-switch {
+  width: 5rem;
+  height: 5rem;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+}
+
+#theme-switch svg {
+  fill: var(--button-primary);
+}
+
+#theme-switch svg:last-child {
+  display: none;
+}
+
+.darkmode #theme-switch svg:first-child {
+  display: none;
+}
+
+.darkmode #theme-switch svg:last-child {
+  display: block;
+}
+
 body {
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: var(--bg-main);
   padding: 2rem;
   background-image: url("../assets/backgroundcrm.png");
   background-repeat: no-repeat;
@@ -67,14 +116,14 @@ body {
 }
 
 .nav-links a {
-  color: #000000;
+  color: var(--text-primary);
   font-family: "Inter", sans-serif;
   font-size: clamp(1.162rem, 1.095rem + 0.276vw, 1.4rem);
   font-weight: 500;
 }
 
 .nav-links a:hover {
-  color: #4e82f3;
+  color: var(--button-primary);
 }
 
 .nav-auth-buttons {
@@ -87,23 +136,23 @@ body {
   padding: 0.6rem 1.5rem;
   border: 1px solid #cbd5e0;
   border-radius: 0.8rem;
-  color: #000000;
+  color: var(--text-primary);
   font-size: clamp(1.162rem, 1.095rem + 0.276vw, 1.4rem);
   font-weight: 500;
 }
 
 .btn-signup {
   padding: 0.6rem 1.5rem;
-  background-color: #4e82f3;
-  color: #FFFFFF;
+  background-color: var(--button-primary);
   border-radius: 8rem;
   font-family: "Inter", sans-serif;
   font-size: clamp(1.162rem, 1.095rem + 0.276vw, 1.4rem);
   font-weight: 500;
+  color: var(--active);
 }
 
 .login-main {
-  background-color: #ffffff;
+  color: var(--text-primary);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -121,8 +170,8 @@ body {
 .login-title {
   font-size: 2rem;
   font-weight: 700;
-  color: #000000;
   margin-bottom: 1rem;
+  color: var(--text-primary);
 }
 
 .login {
@@ -133,8 +182,7 @@ body {
 }
 
 .login-button {
-  background-color: #4e82f3;
-  color: #ffffff;
+  background-color: var(--button-primary);
   border: none;
   border-radius: 0.8rem;
   padding: 0.8rem 1.2rem;
@@ -142,6 +190,7 @@ body {
   font-size: 1.6rem;
   font-weight: 500;
   cursor: pointer;
+  color: #ffffff;
 }
 
 .login-button:hover {
@@ -150,14 +199,16 @@ body {
 
 input {
   padding: 0.8rem;
-  border: 1px solid #898989;
+  border: 1px solid #000000;
   border-radius: 0.8rem;
   font-size: 1.6rem;
   width: 100%;
+  color: var(--text-primary);
+  background-color: var(--bg-main);
 }
 
 .forgot-password, .signup {
-  color: #000000;
+  color: var(--text-primary);
   font-size: clamp(1.162rem, 1.095rem + 0.276vw, 1.4rem);
   cursor: pointer;
   margin-bottom: 1rem;
