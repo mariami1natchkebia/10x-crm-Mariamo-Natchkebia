@@ -10,16 +10,18 @@
   --success: #10B981;
   --button-primary: #4e82f3;
   --button-secondary: #9babce;
+  --card: #d5c3ff;
 }
 
 .crm__theme {
-  --bg-main: #383838;
+  --bg-main: #232323ec;
   --text-primary: #929292;
   --text-secondary: #ffffff;
   --active: #FFFFFF;
   --inactive: #898989;
   --button-primary: #4e82f3;
   --button-secondary: #9babce;
+  --card: #29203e;
 }
 
 html {
@@ -282,18 +284,19 @@ input {
   grid-template-rows: auto 1fr;
   min-height: 100vh;
   margin: 0;
+  overflow: hidden;
+  background-color: #efefef;
 }
 
 .main-aside {
   grid-area: aside;
   max-width: 24rem;
-  height: calc(100vh - 8rem);
+  height: 100%;
   display: flex;
   flex-direction: column;
   margin-right: 1rem;
   box-shadow: 0px 5px 10px 0px rgba(136, 136, 136, 0.674);
-  position: sticky;
-  top: 5rem;
+  overflow-y: auto;
 }
 
 .dashboard {
@@ -302,6 +305,7 @@ input {
   position: sticky;
   grid-area: header;
   width: 100%;
+  background-color: #e2e2e2;
 }
 
 .sidebar {
@@ -309,20 +313,41 @@ input {
   flex-direction: column;
   row-gap: 1.5rem;
   height: 100%;
+  padding-top: 1rem;
 }
 
 .aside-links {
   display: flex;
   flex-direction: row;
-  padding: 1rem 3rem;
+}
+
+.aside-links a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.85rem 2rem;
+  border-radius: 0.8rem;
+  font-weight: 500;
+  transition: background-color 0.15s ease;
+}
+
+.aside-links a:hover {
+  background-color: var(--button-primary);
+  color: var(--bg-main);
+}
+
+.aside-links a:hover svg {
+  fill: var(--bg-main);
 }
 
 .profile {
   display: flex;
   align-items: center;
-  gap: 0.2rem;
-  padding: 1rem 3rem;
+  gap: 1rem;
+  padding: 0rem 2rem;
   margin-top: 3rem;
+  margin-bottom: 1rem;
 }
 
 .profile img {
@@ -348,7 +373,9 @@ input {
 .dashboard-content {
   padding: 1.5rem;
   display: grid;
-  gap: 1.25rem;
+  gap: 6rem;
+  align-items: start;
+  align-content: center;
 }
 
 .page-hero {
@@ -362,27 +389,32 @@ input {
   gap: 1rem;
 }
 
-.stat-card,
-.panel {
-  padding: 1.25rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-}
-
 .stat-card {
+  padding: 1rem 1.5rem;
+  background-color: var(--card);
+  border-radius: 1.5rem;
   display: grid;
-  gap: 0.5rem;
+  gap: 3rem;
+  height: fit-content;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
-
-.stat-title {
-  color: var(--text-soft);
+.stat-card .stat-title {
+  font-size: clamp(0.996rem, 0.938rem + 0.236vw, 1.2rem);
+  font-weight: 500;
+  color: var(--text-primary);
 }
-
-.stat-value {
-  font-size: 1.75rem;
+.stat-card .stat-value {
+  font-size: 2rem;
   font-weight: 700;
+  color: var(--button-primary);
   margin: 0;
+}
+
+.panel {
+  padding: 1.5rem;
+  background-color: #d5c3ff;
+  border-radius: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-grid {
@@ -392,7 +424,7 @@ input {
 }
 
 .card-title {
-  font-size: 1.25rem;
+  font-size: 1.6rem;
   font-weight: 600;
   margin: 0 0 1.25rem;
 }
@@ -413,15 +445,15 @@ input {
 
 .progress-bar {
   width: 100%;
-  border-radius: 999px;
+  border-radius: 50%;
   overflow: hidden;
-  height: 12px;
+  height: 1.2rem;
 }
 
 .progress-fill {
   height: 100%;
   border-radius: inherit;
-  background: #8b5cf6;
+  background-color: #8b5cf6;
   width: 0%;
 }
 
@@ -438,14 +470,14 @@ input {
 .clients-table th {
   color: var(--text-soft);
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: clamp(0.996rem, 0.938rem + 0.236vw, 1.2rem);
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--bg-secondary);
 }
 .clients-table td {
-  padding: 0.85rem 0;
-  font-size: 0.95rem;
-  border-bottom: 1px solid var(--border);
+  padding: 0.9rem 0;
+  font-size: clamp(0.996rem, 0.938rem + 0.236vw, 1.2rem);
+  border-bottom: 1px solid var(--bg-secondary);
 }
 .clients-table tbody tr:last-child td {
   border-bottom: none;
@@ -455,8 +487,8 @@ input {
   background-color: var(--primary);
   color: #ffffff;
   padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.85rem;
+  border-radius: 50%;
+  font-size: clamp(0.996rem, 0.938rem + 0.236vw, 1.2rem);
   font-weight: 500;
   display: inline-block;
 }
