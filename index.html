@@ -10,22 +10,45 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="login-container">
-        <div class="signup-aside">
-            <h2 class="aside-title">Welcome Back!</h2>
-            <p class="aside-text">Don't have an account?</p>
-            <a href="signup.html" class="register-btn">Sign Up</a>
+
+    <!-- header section with logo and navigation menu -->
+
+    <header class="navbar">
+        <div class="nav-logo">
+            <a href="index.html">
+                <img src="assets/logo.png" alt="10X CRM Logo" class="logo">
+            </a>
         </div>
 
+        <nav class="nav-menu">
+            <ul class="nav-links">
+                <li><a href="#">Marketplace</a></li>
+                <li><a href="#">Drops</a></li>
+                <li><a href="#">Brands</a></li>
+            </ul>
+
+            <div class="nav-auth-buttons">
+                <a href="index.html" class="btn-login">Log In</a>
+                <a href="signup.html" class="btn-signup">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
         <div class="login-main">
-            <h1 class="login-title">Log In</h1>
+            <h1 class="login-title">Welcome Back!</h1>
             <form class="login">
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Password" required>
                 <button class="login-button" type="submit">Log In</button>
             </form>
-            <p class="forgot-password"><a href="forgot-password.html">Forgot your password?</a></p>
+            <p class="forgot-password">
+                <a href="forgot-password.html">Forgot your password?</a>
+            </p>
+            <p class="signup">
+                <a href="signup.html">Don't have an account yet? Sign Up</a>
+            </p>
         </div>
-    </div>
+    </main>
 </body>
 </html>

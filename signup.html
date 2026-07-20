@@ -10,13 +10,29 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="login-container">
-        <div class="signup-aside">
-            <h2 class="aside-title">Welcome Back!</h2>
-            <p class="aside-text">Already have an account?</p>
-            <a href="index.html" class="register-btn">Log In</a>
+    <!-- header section with logo and navigation menu -->
+
+    <header class="navbar">
+        <div class="nav-logo">
+            <a href="index.html">
+                <img src="assets/logo.png" alt="10X CRM Logo" class="logo">
+            </a>
         </div>
 
+        <nav class="nav-menu">
+            <ul class="nav-links">
+                <li><a href="#">Marketplace</a></li>
+                <li><a href="#">Drops</a></li>
+                <li><a href="#">Brands</a></li>
+            </ul>
+
+            <div class="nav-auth-buttons">
+                <a href="index.html" class="btn-login">Log In</a>
+                <a href="signup.html" class="btn-signup">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+    <main class="main-content">
         <div class="login-main">
             <h1 class="login-title">Sign Up</h1>
             <form class="login">
@@ -28,6 +44,6 @@
                 <button class="login-button" type="submit">Create Account</button>
             </form>
         </div>
-    </div>
+    </main>
 </body>
 </html>
