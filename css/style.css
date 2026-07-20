@@ -68,11 +68,11 @@ body, button {
   display: none;
 }
 
-.darkmode #theme-switch svg:first-child {
+.crm__theme #theme-switch svg:first-child {
   display: none;
 }
 
-.darkmode #theme-switch svg:last-child {
+.crm__theme #theme-switch svg:last-child {
   display: block;
 }
 
