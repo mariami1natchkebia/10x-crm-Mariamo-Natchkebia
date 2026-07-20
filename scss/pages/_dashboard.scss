@@ -1,19 +1,36 @@
 @use "../abstract/variables" as v;
 @use "sass:map";
 
+
+.app-layout{
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "aside main";
+    grid-template-columns: 24rem 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+    margin: 0;
+
+}
 .main-aside {
+    grid-area: aside;
     max-width: 24rem;
     height: calc(100vh - 8rem);
     display: flex;
     flex-direction: column;
     margin-right: 1rem;
     box-shadow: 0px 5px 10px 0px rgba(136, 136, 136, 0.674);
+    position: sticky;
+    top: 5rem;
 }
 
 .dashboard {
     border-radius: 3rem;
     border-bottom: 1px solid var(--text-secondary);
     position: sticky;
+    grid-area: header;
+    width: 100%;
 }
 
 
@@ -58,3 +75,125 @@
     text-align: center;
     width: auto;
   }
+
+
+.dashboard-content {
+  padding: 1.5rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.page-hero {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.stat-card,
+.panel {
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+.stat-card {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.stat-title {
+  color: var(--text-soft);
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1.25rem;
+}
+
+.pipeline-item {
+  display: grid;
+  gap: 0.4rem;
+  margin-bottom: 0.85rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.pipeline-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress-bar {
+  width: 100%;
+  
+  border-radius: 999px;
+  overflow: hidden;
+  height: 12px;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background:  #8b5cf6;
+  width: 0%; // Default fallback
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.clients-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  
+  th {
+    color: var(--text-soft);
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  td {
+    padding: 0.85rem 0;
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+.badge {
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-block;
+}
