@@ -12,7 +12,7 @@
   --button-secondary: #9babce;
 }
 
-.darkmode {
+.crm__theme {
   --bg-main: #383838;
   --text-primary: #929292;
   --text-secondary: #b4b4b4;
@@ -80,7 +80,11 @@ body {
   min-height: 100vh;
   background-color: var(--bg-main);
   padding: 2rem;
-  background-image: url("../assets/backgroundcrm.png");
+}
+
+.section-wrapper {
+  min-height: 100vh;
+  background-image: url(../assets/backgroundcrm.png);
   background-repeat: no-repeat;
   background-size: cover;
 }

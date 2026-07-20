@@ -2,12 +2,12 @@ let darkmode = localStorage.getItem('darkmode');
 const darkmodeToggle = document.getElementById('theme-switch');
 
 const enableDarkmode = () => {
-    document.body.classList.add('darkmode');
+    document.body.classList.add('crm__theme');
     localStorage.setItem('darkmode', 'active');
 };
 
 const disableDarkmode = () => {
-    document.body.classList.remove('darkmode');
+    document.body.classList.remove('crm__theme');
     localStorage.setItem('darkmode', null);
 };
 
