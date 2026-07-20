@@ -1,0 +1,28 @@
+@use "../abstract/variables" as v;
+@use "sass:map";
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+.search input {
+    border-radius: 2rem;
+    border: 1px solid var(--text-secondary);
+    cursor: pointer;
+        &:hover {
+            border: 1px solid var(--button-primary);
+        }
+}
+
+.search button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+
+    & svg:hover {
+        fill: var(--text-primary);
+    }
+}

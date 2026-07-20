@@ -3,7 +3,7 @@
   --bg-primary: #282828;
   --bg-secondary: #202020;
   --text-primary: #000000;
-  --text-secondary: #898989;
+  --text-secondary: #272727;
   --active: #FFFFFF;
   --inactive: #898989;
   --error: #ED4337;
@@ -15,7 +15,7 @@
 .crm__theme {
   --bg-main: #383838;
   --text-primary: #929292;
-  --text-secondary: #b4b4b4;
+  --text-secondary: #ffffff;
   --active: #FFFFFF;
   --inactive: #898989;
   --button-primary: #4e82f3;
@@ -76,6 +76,30 @@ body, button {
   display: block;
 }
 
+.search {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search input {
+  border-radius: 2rem;
+  border: 1px solid var(--text-secondary);
+  cursor: pointer;
+}
+.search input:hover {
+  border: 1px solid var(--button-primary);
+}
+
+.search button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+.search button svg:hover {
+  fill: var(--text-primary);
+}
+
 body {
   min-height: 100vh;
   background-color: var(--bg-main);
@@ -120,7 +144,7 @@ body {
 }
 
 .nav-links a {
-  color: var(--text-primary);
+  color: var(--text-secondary);
   font-family: "Inter", sans-serif;
   font-size: clamp(1.162rem, 1.095rem + 0.276vw, 1.4rem);
   font-weight: 500;
