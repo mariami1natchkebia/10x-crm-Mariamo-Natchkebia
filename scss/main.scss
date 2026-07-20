@@ -9,5 +9,8 @@
 //layout
 @use "./layout/layout";
 
+//components
+@use "./components/theme";
+
 //pages
 @use "./pages/login";
