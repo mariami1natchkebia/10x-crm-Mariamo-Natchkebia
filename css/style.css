@@ -21,6 +21,8 @@
   --inactive: #898989;
   --button-primary: #4e82f3;
   --button-secondary: #9babce;
+  --error: #ED4337;
+  --success: #10B981;
   --card: #29203e;
 }
 
@@ -242,6 +244,12 @@ input {
   font-size: clamp(1.162rem, 1.095rem + 0.276vw, 1.4rem);
   cursor: pointer;
   margin-bottom: 1rem;
+}
+
+#error-message {
+  color: #ED4337;
+  font-size: 1.6rem;
+  display: none;
 }
 
 @media (max-width: 1200px) {
