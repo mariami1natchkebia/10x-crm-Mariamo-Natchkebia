@@ -6,7 +6,7 @@ const sessionData = localStorage.getItem("crm_session");
 if (sessionData) {
     const user = JSON.parse(sessionData);
     
-    const fullName = user.fullname || user.name || "User";
+    const fullName = user.fullname || "User";
     const firstName = fullName.split(" ")[0];
 
     welcomeText.textContent = `Welcome back, ${firstName}!`;
@@ -14,6 +14,7 @@ if (sessionData) {
 
 // live clock
 function updateClock() {
+    if (!liveClock) return;
     const now = new Date();
     const dateStr = now.toLocaleDateString();
     const timeStr = now.toLocaleTimeString();
@@ -49,3 +50,21 @@ if (tableBody) {
         tableBody.appendChild(newRow);
     });
 }
+
+//this takes name and email from local storage and it will display on the aside
+document.addEventListener('DOMContentLoaded', () => {
+    const profileName = document.getElementById('profile-name');
+    const profileEmail = document.getElementById('profile-email');
+    const sessionData = localStorage.getItem("crm_session");
+
+    if (sessionData) {
+        const user = JSON.parse(sessionData);
+        
+        if (profileName) {
+            profileName.textContent = user.fullname || "User";
+        }
+        if (profileEmail) {
+            profileEmail.textContent = user.email || "user@example.com";
+        }
+    }
+});

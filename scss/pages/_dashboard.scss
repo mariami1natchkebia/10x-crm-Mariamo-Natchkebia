@@ -16,6 +16,14 @@
 
 
 }
+.dashboard {
+    border-radius: 3rem;
+    border-bottom: 1px solid var(--text-secondary);
+    grid-area: header;
+    width: 100%;
+    background-color: #e2e2e2;
+    z-index: 1;
+}
 .main-aside {
     grid-area: aside;
     max-width: 24rem;
@@ -27,15 +35,6 @@
     margin-right: 1rem;
     box-shadow: 0px 5px 10px 0px rgba(136, 136, 136, 0.674);
     overflow-y: auto;
-}
-
-.dashboard {
-    border-radius: 3rem;
-    border-bottom: 1px solid var(--text-secondary);
-    grid-area: header;
-    width: 100%;
-    background-color: #e2e2e2;
-    z-index: 1;
 }
 
 
@@ -87,6 +86,25 @@
     width: 5rem;
     height: 5rem;
     margin-right: 1rem;
+}
+
+.info {
+    min-width: 0;
+    flex:1;
+      h2 {
+            font-size: map.get(v.$font-size, subtitle);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        p {
+            font-size: map.get(v.$font-size, caption);
+            color: #666666;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 }
 
 .logout-btn {
