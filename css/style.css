@@ -410,9 +410,19 @@ input {
   align-content: center;
 }
 
-.page-hero {
+.welcome-clock {
   display: flex;
   justify-content: space-between;
+}
+
+#welcomeText {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+#liveClock {
+  font-size: 1.6rem;
+  font-weight: 700;
 }
 
 .stats-grid {

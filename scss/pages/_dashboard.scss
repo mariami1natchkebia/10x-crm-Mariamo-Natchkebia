@@ -110,9 +110,20 @@
     align-content: center;
 }
 
-.page-hero {
+.welcome-clock {
     display: flex;
     justify-content: space-between;
+}
+
+#welcomeText{
+    font-size: map.get(v.$font-size, heading);
+    font-weight: map.get(v.$font-weight, bold);
+}
+
+#liveClock {
+    font-size: map.get(v.$font-size, paragraph);
+    font-weight: map.get(v.$font-weight, bold);
+
 }
 
 .stats-grid {
