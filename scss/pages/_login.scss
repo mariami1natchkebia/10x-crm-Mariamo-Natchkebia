@@ -165,6 +165,12 @@ input {
     display: none;
 }
 
+#successMessage {
+    color: #ED4337;
+    font-size: map.get(v.$font-size, paragraph);
+    display: none;
+}
+
 
 
 //responsive styles for login page

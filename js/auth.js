@@ -30,6 +30,8 @@ loginForm.addEventListener("submit", async (e) => {
         return;
     }
 
+
+    //checks if user mail and passowrd are valid and handles login
     try {
         const response = await fetch(API_URL);
         const data = await response.json();
@@ -53,5 +55,6 @@ loginForm.addEventListener("submit", async (e) => {
         errorMessage.style.display = "block";
     }
 });
+
 
 
