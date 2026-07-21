@@ -94,6 +94,7 @@ body {
 
 //styles for login main
 .login-main {
+    width: 38rem;
     color: var(--text-primary);
     display: flex;
     flex-direction: column;
@@ -159,14 +160,20 @@ input {
     margin-bottom: 1rem;
 }
 
-#error-message {
-    color: #ED4337;
+.error-message {
+    color: var(--error);
+    font-size: map.get(v.$font-size, subtitle);
+    display: none;
+}
+
+#errorMessage {
+    color: var(--error);
     font-size: map.get(v.$font-size, paragraph);
     display: none;
 }
 
-#successMessage {
-    color: #ED4337;
+.successMessage {
+    color: var(--success);
     font-size: map.get(v.$font-size, paragraph);
     display: none;
 }

@@ -184,6 +184,7 @@ body {
 }
 
 .login-main {
+  width: 38rem;
   color: var(--text-primary);
   display: flex;
   flex-direction: column;
@@ -246,14 +247,20 @@ input {
   margin-bottom: 1rem;
 }
 
-#error-message {
-  color: #ED4337;
+.error-message {
+  color: var(--error);
+  font-size: clamp(1.162rem, 1.095rem + 0.276vw, 1.4rem);
+  display: none;
+}
+
+#errorMessage {
+  color: var(--error);
   font-size: 1.6rem;
   display: none;
 }
 
-#successMessage {
-  color: #ED4337;
+.successMessage {
+  color: var(--success);
   font-size: 1.6rem;
   display: none;
 }
