@@ -1,0 +1,92 @@
+@use "../abstract/variables" as v;
+@use "sass:map";
+
+.clients-container {
+    width: 100%;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.clients-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem;
+}
+
+.clients-title {
+    font-size: map-get(v.$font-size, subtitle);
+    font-weight: map-get(v.$font-weight, bold);
+    color: #1e293b;
+}
+
+.add-client-btn {
+    background-color: #1e293b;
+    color: #ffffff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: map-get(v.$font-size, subtitle);
+    font-weight: map-get(v.$font-weight, semibold);
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+        &:hover {
+            background-color: #334155;
+        }
+}
+
+
+
+.filters-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-main);
+    border: 1px solid #e2e8f0;
+    border-radius: 1.2rem;
+    padding: 1.6rem 2rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.filter-chips {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.chip {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: none;
+    padding: 0.8rem 1.6rem;
+    font-size: map-get(v.$font-size, subtitle);
+    font-weight: map-get(v.$font-weight, medium);
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+        &:hover {
+            background-color: #e2e8f0;
+    }
+}
+
+.chip.active {
+    background-color: #1e293b;
+    color: #ffffff;
+}
+
+.sort-box select {
+    padding: 1rem 1.4rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: map-get(v.$font-size, subtitle);
+    background-color: var(--bg-main);
+    color: #334155;
+    outline: none;
+    cursor: pointer;
+}
+
+.sort-box select:focus {
+    border-color: #3b82f6;
+}
