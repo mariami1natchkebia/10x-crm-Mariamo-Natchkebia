@@ -9,7 +9,7 @@
         "aside main";
     grid-template-columns: 24rem 1fr;
     grid-template-rows: auto 1fr;
-    min-height: 100vh;
+    height: 100vh;
     margin: 0;
     overflow: hidden;
     background-color: #efefef;
@@ -20,6 +20,8 @@
     grid-area: aside;
     max-width: 24rem;
     height: 100%;
+    position: sticky;
+    top: 0;
     display: flex;
     flex-direction: column;
     margin-right: 1rem;
@@ -30,10 +32,10 @@
 .dashboard {
     border-radius: 3rem;
     border-bottom: 1px solid var(--text-secondary);
-    position: sticky;
     grid-area: header;
     width: 100%;
     background-color: #e2e2e2;
+    z-index: 1;
 }
 
 
@@ -108,6 +110,8 @@
     gap: 6rem;
     align-items: start;
     align-content: center;
+    overflow-y: auto;
+    height: 100%;
 }
 
 .welcome-clock {

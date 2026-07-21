@@ -22,7 +22,7 @@ function showToast(msg) {
 
 //this function checks localStorage when the page loads, retrieves the saved list of clients 
 // and builds a new table row (tr) for each one so they are neatly displayed in the table.
-function loadClientsOnStartup() {
+function loadClientsOnStartup(limit = null) {
     const savedClients = JSON.parse(localStorage.getItem('crm_clients')) || [];
     const tableBody = document.querySelector('.clients-table tbody');
 
@@ -30,7 +30,9 @@ function loadClientsOnStartup() {
 
     tableBody.innerHTML = '';
 
-    savedClients.forEach((client, index) => {
+    const clientsToDisplay = limit ? savedClients.slice(0, limit) : savedClients;
+
+    clientsToDisplay.forEach((client, index) => {
         const formattedDate = new Date(client.createdAt).toLocaleDateString('en-US', {
             month: 'short',
             day: 'numeric',
@@ -50,7 +52,14 @@ function loadClientsOnStartup() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', loadClientsOnStartup);
+
+
+//this slices only recent 5 clients
+document.addEventListener('DOMContentLoaded', () => {
+    const isDashboard = window.location.pathname.includes('dashboard');
+    loadClientsOnStartup(isDashboard ? 5 : null); 
+});
+
 
 //when user clicks on "add client", modar overlay appears
 if (addClientBtn) {
