@@ -23,43 +23,35 @@ function showToast(msg) {
 //this function checks localStorage when the page loads, retrieves the saved list of clients 
 // and builds a new table row (tr) for each one so they are neatly displayed in the table.
 function loadClientsOnStartup(limit = null) {
-    const savedClients = JSON.parse(localStorage.getItem('crm_clients')) || [];
-    const tableBody = document.querySelector('.clients-table tbody');
-
-    if (!tableBody || savedClients.length === 0) return;
-
-    tableBody.innerHTML = '';
-
-    const clientsToDisplay = limit ? savedClients.slice(0, limit) : savedClients;
-
-    clientsToDisplay.forEach((client, index) => {
-        const formattedDate = new Date(client.createdAt).toLocaleDateString('en-US', {
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric'
-        });
-
-        const newRow = document.createElement('tr');
-        newRow.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${client.name}</td>
-            <td>${client.company}</td>
-            <td><span class="badge">${client.status}</span></td>
-            <td>${formattedDate}</td>
-            <td>
-                <button class="details-btn" data-id="${client.id}">Details</button>
-                <button class="delete-btn" data-id="${client.id}">Delete</button>
-            </td>
-        `;
-
-        tableBody.appendChild(newRow);
-    });
+    filterAndRenderClients(limit);
 }
 
+async function loadUsersFromApi() {
+    try {
+        const response = await fetch('https://dummyjson.com/users');
+        const data = await response.json();
+        
+        // Transform API users to match your CRM client structure if needed
+        const apiClients = data.users.map(user => ({
+            id: user.id,
+            name: `${user.firstName} ${user.lastName}`,
+            email: user.email,
+            phone: user.phone || '+995 500 000 000',
+            company: user.company ? user.company.name : 'N/A',
+            dealValue: Math.floor(Math.random() * 5000) + 500,
+            status: 'Lead',
+            createdAt: new Date().toISOString()
+        }));
 
-
+        localStorage.setItem('crm_clients', JSON.stringify(apiClients));
+        loadClientsOnStartup();
+    } catch (error) {
+        console.log("Failed to load clients from API", error);
+    }
+}
 //this is async function for deleting client
 async function deleteClient(clientId) {
+    if (!clientId) return;
     if (!confirm("Delete this client? This cannot be undone.")) return;
 
     try {
@@ -76,11 +68,6 @@ async function deleteClient(clientId) {
     savedClients = savedClients.filter(client => String(client.id) !== String(clientId));
     localStorage.setItem('crm_clients', JSON.stringify(savedClients));
 
-    //this filters users and reneews it
-    let savedUsers = JSON.parse(localStorage.getItem('crm_users')) || [];
-    savedUsers = savedUsers.filter(user => String(user.id) !== String(clientId));
-    localStorage.setItem('crm_users', JSON.stringify(savedUsers));
-
 
     //this deletes user from the page
     const deleteBtn = document.querySelector(`.delete-btn[data-id="${clientId}"]`);
@@ -94,13 +81,12 @@ async function deleteClient(clientId) {
 }
 
 document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('delete-btn')) {
-        const clientId = e.target.getAttribute('data-id');
+    const deleteBtn = e.target.closest('.delete-btn');
+    if (deleteBtn) {
+        const clientId = deleteBtn.getAttribute('data-id');
         deleteClient(clientId);
     }
 });
-
-
 
 //this slices only recent 5 clients
 document.addEventListener('DOMContentLoaded', () => {
@@ -164,7 +150,7 @@ if (addClientForm) {
 
         //checks mail and send error messages
         const existingClients = JSON.parse(localStorage.getItem('crm_clients')) || [];
-        if (existingClients.some(c => c.email.toLowerCase() === email.toLowerCase())) {
+        if (existingClients.some(c => c.email && c.email.toLowerCase() === email.toLowerCase())) {
             showToast("A client with this email already exists");
             return;
         }
@@ -199,23 +185,27 @@ if (addClientForm) {
             });
 
             if (response.ok) {
-                const serverResult = await response.json();
-                newClientData.id = serverResult.id || Date.now();
+                await response.json(); 
+                newClientData.id = `local-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 
                 existingClients.unshift(newClientData);
                 localStorage.setItem('crm_clients', JSON.stringify(existingClients));
 
                 closeModal();
-
                 loadClientsOnStartup();
-
                 showToast("Client added  successfully!");
             } else {
                 showToast("Failed to add client on server.");
             }
         } catch (error) {
             console.error("Error:", error);
-            showToast("Connection error.");
+            newClientData.id = `local-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+            existingClients.unshift(newClientData);
+            localStorage.setItem('crm_clients', JSON.stringify(existingClients));
+
+            closeModal();
+            loadClientsOnStartup();
+            showToast("Client added locally (Connection error).");
         }
     });
 }
@@ -247,7 +237,7 @@ document.addEventListener('click', (e) => {
             const modal = document.getElementById('clientDetailsModal');
             if (modal) {
                 modal.setAttribute('data-current-id', client.id);
-                renderNotes(client.notes || []);
+                fillNotes(client.notes || []);
                 modal.style.display = 'flex';
             }
         }
@@ -292,13 +282,13 @@ document.addEventListener('click', (e) => {
         localStorage.setItem('crm_clients', JSON.stringify(savedClients));
 
         const updatedClient = savedClients.find(c => String(c.id) === String(clientId));
-        renderNotes(updatedClient.notes);
+        fillNotes(updatedClient.notes);
         textarea.value = '';
     }
 });
 
 //function for reminder
-function renderNotes(notes) {
+function fillNotes(notes) {
     const container = document.getElementById('notesListContainer');
     if (!container) return;
     container.innerHTML = '';
@@ -349,5 +339,115 @@ document.addEventListener('DOMContentLoaded', () => {
         if (profileEmail) {
             profileEmail.textContent = user.email || "user@example.com";
         }
+    }
+});
+
+
+//function for filter and search
+let currentFilter = 'All'; 
+let currentSearch = '';
+
+const filterChips = document.querySelectorAll('.filter-chips .chip'); 
+const searchInput = document.querySelector('.filters-panel .search-box input');
+const sortSelect = document.querySelector('.sort-box select');
+
+
+filterChips.forEach(chip => { 
+    chip.addEventListener('click', (e) => {
+        filterChips.forEach(c => c.classList.remove('active'));
+        e.target.classList.add('active');
+
+        currentFilter = e.target.textContent.trim(); 
+        filterAndRenderClients();
+    });
+});
+
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        currentSearch = e.target.value;
+        filterAndRenderClients();
+    });
+}
+
+if (sortSelect) {
+    sortSelect.addEventListener('change', () => {
+        filterAndRenderClients();
+    });
+}
+
+function getVisibleClients() {
+    let clients = JSON.parse(localStorage.getItem('crm_clients')) || []; 
+
+    if (currentFilter !== 'All') {
+        clients = clients.filter(client => client.status && client.status.toLowerCase() === currentFilter.toLowerCase());
+    }
+
+    if (currentSearch.trim() !== '') {
+        const searchText = currentSearch.toLowerCase();
+        clients = clients.filter(client => 
+            (client.name && client.name.toLowerCase().includes(searchText)) || 
+            (client.company && client.company.toLowerCase().includes(searchText))
+        );
+    }
+
+    if (sortSelect) {
+        const sortValue = sortSelect.value;
+        if (sortValue === 'newest') {
+            clients.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        } else if (sortValue === 'oldest') {
+            clients.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+        } else if (sortValue === 'name') {
+            clients.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+        }
+    }
+
+    return clients;
+}
+
+function filterAndRenderClients(limit = null) {
+    let visibleClients = getVisibleClients();
+    
+    if (limit) {
+        visibleClients = visibleClients.slice(0, limit);
+    }
+
+    const tableBody = document.querySelector('.clients-table tbody');
+    if (!tableBody) return;
+
+    tableBody.innerHTML = '';
+
+    if (visibleClients.length === 0) {
+        tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center;">No clients found</td></tr>`;
+        return;
+    }
+
+    visibleClients.forEach((client, index) => {
+        const formattedDate = client.createdAt ? new Date(client.createdAt).toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+        }) : 'N/A';
+
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${client.name || ''}</td>
+            <td>${client.company || ''}</td>
+            <td><span class="badge">${client.status || ''}</span></td>
+            <td>${formattedDate}</td>
+            <td>
+                <button class="details-btn" data-id="${client.id}">Details</button>
+                <button class="delete-btn" data-id="${client.id}">Delete</button>
+            </td>
+        `;
+        tableBody.appendChild(newRow);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem('crm_clients') || JSON.parse(localStorage.getItem('crm_clients')).length === 0) {
+        loadUsersFromApi();
+    } else {
+        loadClientsOnStartup();
     }
 });
