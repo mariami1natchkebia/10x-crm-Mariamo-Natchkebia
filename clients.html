@@ -134,8 +134,6 @@
                                 <td><span class="badge"> </span></td>
                                 <td></td>
                                 <td>
-                                <!-- <button class="details-btn" data-id="${client.id}"> </button>
-                                <button class="delete-btn" data-id="${client.id}"> </button> -->
                             </td>
                             </tr>
                         </tbody>
@@ -190,6 +188,37 @@
             </div>
         </div>
     </main>
+    <div class="modal-overlay" id="clientDetailsModal">
+    <div class="details-modal-content">
+        <div class="details-left">
+            <h2 id="detailName">sewedwed</h2>
+            <p><strong>Email:</strong> <span id="detailEmail">qwdwd@xdddd</span></p>
+            <p><strong>Phone:</strong> <span id="detailPhone">wdqwd</span></p>
+            <p><strong>Company:</strong> <span id="detailCompany">aqaq</span></p>
+            <p><strong>Status:</strong> <span id="detailStatus">Lead</span></p>
+            <p><strong>Deal Value:</strong> <span id="detailDealValue">$32,323</span></p>
+            <p><strong>Created:</strong> <span id="detailCreatedAt">Jul 19, 2026</span></p>
+        </div>
+        <div class="details-right">
+            <h3>Add Note</h3>
+            <textarea id="noteInput" placeholder="Add a recent update"></textarea>
+            
+            <div class="actions-row">
+                <button type="button" class="save-note-btn">Save Note</button>
+                <button type="button" class="reminder-btn">Set Reminder</button>
+            </div>
+
+            <div class="notes-list" id="notesListContainer">
+                <div class="note-item">
+                    <div class="note-date">Jul 21, 2026</div>
+                    <p class="note-text">e</p>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="close-modal-x" id="closeDetailsModal">&times;</button>
+    </div>
+</div>
     <div id="toastMessage" class="toast-message">Client added  successfully!</div>
 
     <script src="./js/clients.js"></script>

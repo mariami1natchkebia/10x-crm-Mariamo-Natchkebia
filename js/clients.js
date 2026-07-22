@@ -220,6 +220,118 @@ if (addClientForm) {
     });
 }
 
+//function for user details
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('details-btn')) {
+        const clientId = e.target.getAttribute('data-id');
+        
+        const savedClients = JSON.parse(localStorage.getItem('crm_clients')) || [];
+        const client = savedClients.find(c => String(c.id) === String(clientId));
+
+        if (client) {
+            document.getElementById('detailName').textContent = client.name || 'N/A';
+            document.getElementById('detailEmail').textContent = client.email || 'N/A';
+            document.getElementById('detailPhone').textContent = client.phone || 'N/A';
+            document.getElementById('detailCompany').textContent = client.company || '-';
+            document.getElementById('detailStatus').textContent = client.status || 'Lead';
+            document.getElementById('detailDealValue').textContent = client.dealValue ? `$${client.dealValue}` : 'N/A';
+            
+            const formattedDate = client.createdAt ? new Date(client.createdAt).toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+            }) : 'N/A';
+            document.getElementById('detailCreatedAt').textContent = formattedDate;
+
+            
+            const modal = document.getElementById('clientDetailsModal');
+            if (modal) {
+                modal.setAttribute('data-current-id', client.id);
+                renderNotes(client.notes || []);
+                modal.style.display = 'flex';
+            }
+        }
+    }
+});
+
+
+//closing modal overlay
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('clientDetailsModal');
+    if (!modal) return;
+
+    if (e.target.id === 'closeDetailsModal' || e.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+
+//function for adding notes
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('save-note-btn')) {
+        const modal = document.getElementById('clientDetailsModal');
+        const clientId = modal.getAttribute('data-current-id');
+        const textarea = document.getElementById('noteInput');
+        const noteText = textarea.value.trim();
+
+        if (!noteText) return;
+
+        const newNote = {
+            text: noteText,
+            date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+        };
+
+        let savedClients = JSON.parse(localStorage.getItem('crm_clients')) || [];
+        savedClients = savedClients.map(client => {
+            if (String(client.id) === String(clientId)) {
+                if (!client.notes) client.notes = [];
+                client.notes.unshift(newNote);
+            }
+            return client;
+        });
+        localStorage.setItem('crm_clients', JSON.stringify(savedClients));
+
+        const updatedClient = savedClients.find(c => String(c.id) === String(clientId));
+        renderNotes(updatedClient.notes);
+        textarea.value = '';
+    }
+});
+
+//function for reminder
+function renderNotes(notes) {
+    const container = document.getElementById('notesListContainer');
+    if (!container) return;
+    container.innerHTML = '';
+
+    notes.forEach(note => {
+        const item = document.createElement('div');
+        item.className = 'note-item';
+        item.innerHTML = `
+            <div class="note-date">${note.date}</div>
+            <p class="note-text">${note.text}</p>
+        `;
+        container.appendChild(item);
+    });
+}
+
+
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('reminder-btn')) {
+        const modal = document.getElementById('clientDetailsModal');
+        const clientId = modal.getAttribute('data-current-id');
+
+        let savedClients = JSON.parse(localStorage.getItem('crm_clients')) || [];
+        const client = savedClients.find(c => String(c.id) === String(clientId));
+        const clientName = client ? client.name : 'Client';
+
+        showToast("Reminder set ");
+
+        setTimeout(() => {
+            showToast(`Follow up: ${clientName}`);
+        }, 60000);
+    }
+});
+
 
 
 //this takes name and email from local storage and it will display on the aside
