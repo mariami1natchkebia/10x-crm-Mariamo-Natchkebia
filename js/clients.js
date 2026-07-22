@@ -58,6 +58,50 @@ function loadClientsOnStartup(limit = null) {
 
 
 
+//this is async function for deleting client
+async function deleteClient(clientId) {
+    if (!confirm("Delete this client? This cannot be undone.")) return;
+
+    try {
+        await fetch(`https://dummyjson.com/users/${clientId}`, {
+            method: "DELETE",
+        });
+    } catch (error) {
+        console.log("Server delete skipped");
+    }
+
+
+    //this filters clients and reneews it
+    let savedClients = JSON.parse(localStorage.getItem('crm_clients')) || [];
+    savedClients = savedClients.filter(client => String(client.id) !== String(clientId));
+    localStorage.setItem('crm_clients', JSON.stringify(savedClients));
+
+    //this filters users and reneews it
+    let savedUsers = JSON.parse(localStorage.getItem('crm_users')) || [];
+    savedUsers = savedUsers.filter(user => String(user.id) !== String(clientId));
+    localStorage.setItem('crm_users', JSON.stringify(savedUsers));
+
+
+    //this deletes user from the page
+    const deleteBtn = document.querySelector(`.delete-btn[data-id="${clientId}"]`);
+    if (deleteBtn) {
+        const row = deleteBtn.closest('tr');
+        if (row) row.remove();
+    }
+
+    loadClientsOnStartup();
+    showToast("Client deleted");
+}
+
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete-btn')) {
+        const clientId = e.target.getAttribute('data-id');
+        deleteClient(clientId);
+    }
+});
+
+
+
 //this slices only recent 5 clients
 document.addEventListener('DOMContentLoaded', () => {
     const isDashboard = window.location.pathname.includes('dashboard');
@@ -65,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-//when user clicks on "add client", modar overlay appears
+//when user clicks on "add client" modar overlay appears
 if (addClientBtn) {
     addClientBtn.addEventListener('click', () => {
         if (modalOverlay) modalOverlay.style.display = 'flex';
@@ -145,7 +189,7 @@ if (addClientForm) {
             createdAt: new Date().toISOString()
         };
 
-        // sends the new client data to the server saves it to localStorage if successful, and updates the table.
+        // sends the new client data to the server saves it to localStorage if successful and updates the table.
 
         try {
             const response = await fetch(`${API_URL}/add`, {
@@ -175,3 +219,23 @@ if (addClientForm) {
         }
     });
 }
+
+
+
+//this takes name and email from local storage and it will display on the aside
+document.addEventListener('DOMContentLoaded', () => {
+    const profileName = document.getElementById('profile-name');
+    const profileEmail = document.getElementById('profile-email');
+    const sessionData = localStorage.getItem("crm_session");
+
+    if (sessionData) {
+        const user = JSON.parse(sessionData);
+        
+        if (profileName) {
+            profileName.textContent = user.fullname || "User";
+        }
+        if (profileEmail) {
+            profileEmail.textContent = user.email || "user@example.com";
+        }
+    }
+});

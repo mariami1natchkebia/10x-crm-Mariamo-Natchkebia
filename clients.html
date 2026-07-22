@@ -37,8 +37,8 @@
         <div class="profile">
             <img src="./assets/profile.png" alt="Profile Picture" class="profile-picture">
             <div class="info">
-                <h2>Amily Doe</h2>
-                <p>amily.doe@example.com</p>
+                <h2 id="profile-name">Amily Doe</h2>
+                <p id="profile-email">amily.doe@example.com</p>
             </div>    
         </div>
         <nav class= "sidebar">
@@ -128,11 +128,15 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1</td>
-                                <td>sewedwed</td>
-                                <td>aqaq</td>
-                                <td><span class="badge">Lead</span></td>
-                                <td>Jul 19, 2026</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td><span class="badge"> </span></td>
+                                <td></td>
+                                <td>
+                                <!-- <button class="details-btn" data-id="${client.id}"> </button>
+                                <button class="delete-btn" data-id="${client.id}"> </button> -->
+                            </td>
                             </tr>
                         </tbody>
                     </table>
@@ -187,6 +191,7 @@
         </div>
     </main>
     <div id="toastMessage" class="toast-message">Client added  successfully!</div>
+
     <script src="./js/clients.js"></script>
     <script src="./js/darkmode.js"></script>
 </body>
