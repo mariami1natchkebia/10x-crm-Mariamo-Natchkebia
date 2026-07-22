@@ -126,7 +126,7 @@ body, button {
 body {
   min-height: 100vh;
   background-color: var(--bg-main);
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .section-wrapper {
@@ -317,19 +317,20 @@ input {
 }
 .app-layout {
   display: grid;
-  grid-template-areas: "aside main" "footer footer";
+  grid-template-areas: "header header" "aside main" "footer footer";
   grid-template-columns: 24rem 1fr;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
-  margin-top: 2rem;
   background-color: #efefef;
 }
 
 .dashboard {
+  grid-area: header;
+  height: 8rem;
   position: fixed;
   top: 0;
+  left: 0;
   right: 0;
-  height: auto;
   border-radius: 0 0 3rem 3rem;
   border-bottom: 1px solid var(--text-secondary);
   grid-area: header;
@@ -341,9 +342,10 @@ input {
 .main-aside {
   grid-area: aside;
   width: 24rem;
-  height: 100vh;
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 8rem;
+  height: calc(100vh - 8rem);
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   margin-right: 1rem;
@@ -353,6 +355,7 @@ input {
 .sidebar {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   row-gap: 1.5rem;
   height: 100%;
   margin-top: 1rem;
@@ -421,7 +424,7 @@ input {
   border: none;
   border-radius: 0.8rem;
   padding: 0.8rem 1.2rem;
-  margin: 0 1rem;
+  margin: 1rem;
   font-size: 1.6rem;
   font-weight: 500;
   cursor: pointer;
@@ -431,14 +434,13 @@ input {
 }
 
 .dashboard-content {
+  grid-area: main;
   padding: 1.5rem;
   display: grid;
   gap: 6rem;
   align-items: start;
   align-content: center;
-  overflow-y: auto;
-  height: 100%;
-  margin-top: 2rem;
+  margin-top: 6rem;
 }
 
 .welcome-clock {
@@ -546,12 +548,10 @@ input {
   font-weight: 500;
   font-size: clamp(0.996rem, 0.938rem + 0.236vw, 1.2rem);
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--bg-secondary);
 }
 .clients-table td {
   padding: 0.9rem 0;
   font-size: clamp(0.996rem, 0.938rem + 0.236vw, 1.2rem);
-  border-bottom: 1px solid var(--bg-secondary);
 }
 .clients-table tbody tr:last-child td {
   border-bottom: none;
@@ -576,7 +576,6 @@ footer {
   width: 100%;
   max-width: 120rem;
   margin: 0 auto;
-  padding-top: 8rem;
 }
 
 .clients-header {
@@ -617,7 +616,7 @@ footer {
   padding: 1.6rem 2rem;
   gap: 1.5rem;
   flex-wrap: wrap;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  margin-bottom: 2rem;
 }
 
 .filter-chips {
@@ -889,12 +888,12 @@ footer {
   background: none;
   border: none;
   color: #6b7280;
-  font-size: 2rem;
+  font-size: 2.2rem;
   cursor: pointer;
   transition: color 0.2s;
 }
 .details-modal-content .close-modal-x:hover {
-  color: var(--text-main, #111827);
+  color: #111827;
 }
 
 .toast-message.show {
@@ -1002,7 +1001,7 @@ footer {
 }
 
 .table-status-select {
-  padding: 0.8rem 1.4rem;
+  padding: 0.8rem 1.6rem;
   border: 1px solid var(--button-secondary);
   border-radius: 2rem;
   background-color: var(--bg-main);

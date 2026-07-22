@@ -5,7 +5,7 @@
     width: 100%;
     max-width: 120rem;
     margin: 0 auto;
-    padding-top: 8rem;
+
 }
 
 .clients-header {
@@ -48,7 +48,7 @@
     padding: 1.6rem 2rem;
     gap: 1.5rem;
     flex-wrap: wrap;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    margin-bottom: 2rem;
 }
 
 .filter-chips {
@@ -347,12 +347,12 @@
         background: none;
         border: none;
         color: #6b7280;
-        font-size: 2rem;
+        font-size: 2.2rem;
         cursor: pointer;
         transition: color 0.2s;
 
         &:hover {
-            color: var(--text-main, #111827);
+            color: #111827;
         }
     }
 }
@@ -469,7 +469,7 @@
 }
 
 .table-status-select {
-    padding: 0.8rem 1.4rem;
+    padding: 0.8rem 1.6rem;
     border: 1px solid var(--button-secondary);
     border-radius: 2rem;
     background-color: var(--bg-main);
