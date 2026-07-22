@@ -1,0 +1,36 @@
+@use "../abstract/variables" as v;
+@use "sass:map";
+
+.editInformation {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5rem;
+        
+}
+
+.profile-page {
+    justify-items: center ;
+    align-content: start;
+}
+
+.edit-wrapper {
+    display: flex;
+    gap: 16rem;
+}
+
+.editProfile, .editPassword {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    border: 2px solid #000000;
+    border-radius: 0.8rem;
+    padding: 2rem;
+
+    input {
+            width: 24rem;
+        }
+        h3 {
+            font-size: map-get(v.$font-size, subtitle);
+        }
+}
+

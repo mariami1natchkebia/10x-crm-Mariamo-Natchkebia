@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 <li class="aside-links">
-                    <a href="email.html">
+                    <a href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M320-320h480v-120H698q-21 37-58 58.5T560-360q-42 0-79-21.5T422-440H320v120Zm240-120q34 0 57-23.5t23-56.5h160v-280H320v280h160q0 33 23.5 56.5T560-440ZM320-240q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320ZM160-80q-33 0-56.5-23.5T80-160v-560h80v560h560v80H160Zm160-240h480-480Z"/></svg>
                         <span>Emails</span>
                     </a>
@@ -87,8 +87,8 @@
         <section class="clients-container">
     
             <div class="clients-header">
-                <h2 class="clients-title">Clients</h2>
-                <button class="add-client-btn">+ Add Client</button>
+                <h2 class="clients-title">Email</h2>
+                <button class="add-client-btn">Compose</button>
             </div>
 
             <section class="filters-panel">
@@ -99,10 +99,10 @@
 
                 <div class="filter-chips">
                     <button class="chip active">All</button>
-                    <button class="chip">Lead</button>
-                    <button class="chip">Contacted</button>
-                    <button class="chip">Won</button>
-                    <button class="chip">Lost</button>
+                    <button class="chip">Unread</button>
+                    <button class="chip">Drafts</button>
+                    <button class="chip">Social</button>
+                    <button class="chip">Spam</button>
                 </div>
 
                 <div class="sort-box">
@@ -114,7 +114,7 @@
                 </div>
             </section>
             <article class="panel clients-card">
-                <h2 class="card-title">Recent Clients</h2>
+                <h2 class="card-title">Recent Emails</h2>
                 <div class="table-responsive">
                     <table class="clients-table">
                         <thead>
@@ -170,10 +170,8 @@
                         <div class="form-group">
                             <label>Status</label>
                             <select id="clientStatus">
-                                <option value="Lead">Lead</option>
-                                <option value="Contacted">Contacted</option>
-                                <option value="Won">Won</option>
-                                <option value="Lost">Lost</option>
+                                <option value="Lead">Read</option>
+                                <option value="Contacted">Unread</option>
                             </select>
                         </div>
                     </div>

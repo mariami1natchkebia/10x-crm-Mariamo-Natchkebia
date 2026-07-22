@@ -434,9 +434,9 @@ input {
 }
 
 .dashboard-content {
+  display: grid;
   grid-area: main;
   padding: 1.5rem;
-  display: grid;
   gap: 6rem;
   align-items: start;
   align-content: center;
@@ -1052,6 +1052,37 @@ footer {
   color: var(--text-secondary);
   padding: 2rem;
   font-size: 1.6rem;
+}
+
+.editInformation {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5rem;
+}
+
+.profile-page {
+  justify-items: center;
+  align-content: start;
+}
+
+.edit-wrapper {
+  display: flex;
+  gap: 16rem;
+}
+
+.editProfile, .editPassword {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  border: 2px solid #000000;
+  border-radius: 0.8rem;
+  padding: 2rem;
+}
+.editProfile input, .editPassword input {
+  width: 24rem;
+}
+.editProfile h3, .editPassword h3 {
+  font-size: clamp(1.162rem, 1.095rem + 0.276vw, 1.4rem);
 }
 
 /*# sourceMappingURL=style.css.map */
