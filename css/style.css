@@ -690,6 +690,7 @@ footer {
 }
 .modal-header h2 {
   font-size: 2rem;
+  font-weight: 600;
   color: #111827;
   margin: 0;
 }
@@ -750,6 +751,7 @@ footer {
   border: none;
   border-radius: 0.6rem;
   font-size: 1.6rem;
+  font-weight: 600;
   cursor: pointer;
   margin-top: 0.8rem;
 }
@@ -794,11 +796,13 @@ footer {
 }
 .details-modal-content .details-left h2 {
   font-size: 2rem;
+  font-weight: 600;
   margin-bottom: 0.5rem;
   color: var(--text-main, #111827);
 }
 .details-modal-content .details-left p {
   font-size: 1.6rem;
+  font-weight: 600;
   margin: 0;
   color: #6b7280;
 }
@@ -814,6 +818,7 @@ footer {
 }
 .details-modal-content .details-right h3 {
   font-size: 2rem;
+  font-weight: 600;
   margin: 0;
   color: var(--text-main, #111827);
 }
@@ -828,6 +833,7 @@ footer {
   outline: none;
   resize: none;
   font-size: 1.6rem;
+  font-weight: 600;
 }
 .details-modal-content .details-right textarea::placeholder {
   color: #9ca3af;
@@ -842,6 +848,7 @@ footer {
   border: none;
   cursor: pointer;
   font-size: 1.6rem;
+  font-weight: 600;
   transition: opacity 0.2s;
 }
 .details-modal-content .details-right .actions-row button:hover {
@@ -872,11 +879,13 @@ footer {
 }
 .details-modal-content .details-right .notes-list .note-item .note-date {
   font-size: clamp(1.162rem, 1.095rem + 0.276vw, 1.4rem);
+  font-weight: 600;
   color: #6b7280;
   margin-bottom: 0.4rem;
 }
 .details-modal-content .details-right .notes-list .note-item .note-text {
   font-size: 1.6rem;
+  font-weight: 600;
   color: var(--text-main, #111827);
   margin: 0;
   word-break: break-word;

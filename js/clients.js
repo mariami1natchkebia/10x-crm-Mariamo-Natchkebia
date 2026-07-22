@@ -150,7 +150,7 @@ if (addClientForm) {
 
         //checks mail and send error messages
         const existingClients = JSON.parse(localStorage.getItem('crm_clients')) || [];
-        if (existingClients.some(client => client.email && c.email.toLowerCase() === email.toLowerCase())) {
+        if (existingClients.some(client => client.email && client.email.toLowerCase() === email.toLowerCase())) {
             showToast("A client with this email already exists");
             return;
         }
@@ -324,21 +324,31 @@ document.addEventListener('click', (e) => {
 
 
 
-//this takes name and email from local storage and it will display on the aside
+function getCurrentUser() {
+    const sessionData = localStorage.getItem('crm_session');
+    if (!sessionData) return null;
+    let session;
+    try {
+        session = JSON.parse(sessionData);
+    } catch (e) {
+        return null;
+    }
+    const users = JSON.parse(localStorage.getItem('crm_users')) || [];
+    return users.find(u =>
+        (session.userId !== undefined && String(u.id) === String(session.userId)) ||
+        (session.email && u.email === session.email)
+    ) || null;
+}
+
+//this takes name and email from crm_users and displays them on the aside
 document.addEventListener('DOMContentLoaded', () => {
     const profileName = document.getElementById('profile-name');
     const profileEmail = document.getElementById('profile-email');
-    const sessionData = localStorage.getItem("crm_session");
+    const user = getCurrentUser();
 
-    if (sessionData) {
-        const user = JSON.parse(sessionData);
-        
-        if (profileName) {
-            profileName.textContent = user.fullname || "User";
-        }
-        if (profileEmail) {
-            profileEmail.textContent = user.email || "user@example.com";
-        }
+    if (user) {
+        if (profileName) profileName.textContent = user.fullname || "User";
+        if (profileEmail) profileEmail.textContent = user.email || "user@example.com";
     }
 });
 

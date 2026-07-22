@@ -29,7 +29,12 @@ loginForm.addEventListener("submit", (e) => {
 
     if (validUser) {
         errorMessage.style.display = "none";
-        localStorage.setItem("crm_session", JSON.stringify(validUser));
+        const session = {
+            userId: validUser.id,
+            email: validUser.email,
+            loggedIn: true
+        };
+        localStorage.setItem("crm_session", JSON.stringify(session));
         window.location.href = "dashboard.html";
     } else {
         errorMessage.textContent = "Invalid email or password";

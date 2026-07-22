@@ -121,7 +121,7 @@
     margin-bottom: 2rem;
         h2 {
             font-size: map-get(v.$font-size, heading);
-            font-weight: map-get(v.$font-weight, semi-bold);
+            font-weight: map-get(v.$font-weight, semibold);
             color: #111827;
             margin: 0;
         }
@@ -183,7 +183,7 @@
     border: none;
     border-radius: 0.6rem;
     font-size: map-get(v.$font-size, paragraph);
-    font-weight: map-get(v.$font-weight, semi-bold);
+    font-weight: map-get(v.$font-weight, semibold);
     cursor: pointer;
     margin-top: 0.8rem;
         &:hover {
@@ -229,14 +229,14 @@
 
         h2 {
             font-size: map-get(v.$font-size, heading);
-            font-weight: map-get(v.$font-weight, semi-bold);
+            font-weight: map-get(v.$font-weight, semibold);
             margin-bottom: 0.5rem;
             color: var(--text-main, #111827);
         }
 
         p {
             font-size: map-get(v.$font-size, paragraph);
-            font-weight: map-get(v.$font-weight, semi-bold);
+            font-weight: map-get(v.$font-weight, semibold);
             margin: 0;
             color: #6b7280;
 
@@ -255,7 +255,7 @@
 
         h3 {
             font-size: map-get(v.$font-size, heading);
-            font-weight: map-get(v.$font-weight, semi-bold);
+            font-weight: map-get(v.$font-weight, semibold);
             margin: 0;
             color: var(--text-main, #111827);
         }
@@ -271,7 +271,7 @@
             outline: none;
             resize: none;
             font-size: map-get(v.$font-size, paragraph);
-            font-weight: map-get(v.$font-weight, semi-bold);
+            font-weight: map-get(v.$font-weight, semibold);
 
             &::placeholder {
                 color: #9ca3af;
@@ -288,7 +288,7 @@
                 border: none;
                 cursor: pointer;
                 font-size: map-get(v.$font-size, paragraph);
-                font-weight: map-get(v.$font-weight, semi-bold);
+                font-weight: map-get(v.$font-weight, semibold);
                 transition: opacity 0.2s;
 
                 &:hover {
@@ -324,14 +324,14 @@
 
                 .note-date {
                     font-size: map-get(v.$font-size, subtitle);
-                    font-weight: map-get(v.$font-weight, semi-bold);
+                    font-weight: map-get(v.$font-weight, semibold);
                     color: #6b7280;
                     margin-bottom: 0.4rem;
                 }
 
                 .note-text {
                     font-size: map-get(v.$font-size, paragraph);
-                    font-weight: map-get(v.$font-weight, semi-bold);
+                    font-weight: map-get(v.$font-weight, semibold);
                     color: var(--text-main, #111827);
                     margin: 0;
                     word-break: break-word;

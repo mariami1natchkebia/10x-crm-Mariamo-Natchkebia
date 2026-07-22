@@ -1,12 +1,10 @@
 const welcomeText = document.querySelector("#welcomeText");
 const liveClock = document.querySelector("#liveClock");
 
-const sessionData = localStorage.getItem("crm_session");
+const currentUser = getCurrentUser();
 
-if (sessionData) {
-    const user = JSON.parse(sessionData);
-    
-    const fullName = user.fullname || "User";
+if (currentUser) {
+    const fullName = currentUser.fullname || "User";
     const firstName = fullName.split(" ")[0];
 
     welcomeText.textContent = `Welcome back, ${firstName}!`;
@@ -31,41 +29,53 @@ const tableBody = document.querySelector('.clients-table tbody');
 if (tableBody) {
     tableBody.innerHTML = '';
     
-    savedClients.slice(0, 5).forEach((client, index) => {
-        const formattedDate = client.createdAt ? new Date(client.createdAt).toLocaleDateString('en-US', {
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric'
-        }) : 'N/A';
+    savedClients.slice(0, 5).forEach((client) => {
+        const initials = client.name ? client.name.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2) : "CL";
 
         const newRow = document.createElement('tr');
         newRow.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${client.name || ''}</td>
-            <td>${client.company || ''}</td>
+            <td>
+                <div class="client-info-cell">
+                    <div class="client-avatar">${initials}</div>
+                    <div class="client-details-text">
+                        <span class="client-name">${client.name}</span>
+                        <span class="client-subtext">${client.company || 'N/A'}</span>
+                    </div>
+                </div>
+            </td>
             <td><span class="badge">${client.status || ''}</span></td>
-            <td>${formattedDate}</td>
         `;
 
         tableBody.appendChild(newRow);
     });
 }
 
-//this takes name and email from local storage and it will display on the aside
+//resolves the full user record for the current session (crm_session is just a pointer)
+function getCurrentUser() {
+    const sessionData = localStorage.getItem('crm_session');
+    if (!sessionData) return null;
+    let session;
+    try {
+        session = JSON.parse(sessionData);
+    } catch (e) {
+        return null;
+    }
+    const users = JSON.parse(localStorage.getItem('crm_users')) || [];
+    return users.find(u =>
+        (session.userId !== undefined && String(u.id) === String(session.userId)) ||
+        (session.email && u.email === session.email)
+    ) || null;
+}
+
+//this takes name and email from crm_users and displays them on the aside
 document.addEventListener('DOMContentLoaded', () => {
     const profileName = document.getElementById('profile-name');
     const profileEmail = document.getElementById('profile-email');
-    const sessionData = localStorage.getItem("crm_session");
+    const user = getCurrentUser();
 
-    if (sessionData) {
-        const user = JSON.parse(sessionData);
-        
-        if (profileName) {
-            profileName.textContent = user.fullname || "User";
-        }
-        if (profileEmail) {
-            profileEmail.textContent = user.email || "user@example.com";
-        }
+    if (user) {
+        if (profileName) profileName.textContent = user.fullname || "User";
+        if (profileEmail) profileEmail.textContent = user.email || "user@example.com";
     }
 });
 
@@ -110,22 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
         newThisWeekEl.textContent = newClientsCount;
     }
 
-        const pipelineCounts = {
-        Lead: clients.filter(clients => clients.status === "Lead").length,
-        Contacted: clients.filter(clients => clients.status === "Contacted").length,
-        Won: clients.filter(clients => clients.status === "Won").length,
-        Lost: clients.filter(clients => clients.status === "Lost").length
-    };
-
-    const leadEl = document.getElementById("pipelineLead");
-    const contactedEl = document.getElementById("pipelineContacted");
-    const wonEl = document.getElementById("pipelineWon");
-    const lostEl = document.getElementById("pipelineLost");
-
-    if (leadEl) leadEl.textContent = pipelineCounts.Lead;
-    if (contactedEl) contactedEl.textContent = pipelineCounts.Contacted;
-    if (wonEl) wonEl.textContent = pipelineCounts.Won;
-    if (lostEl) lostEl.textContent = pipelineCounts.Lost;
 });
 
 
