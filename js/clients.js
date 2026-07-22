@@ -328,7 +328,7 @@ document.addEventListener('click', (e) => {
 
         setTimeout(() => {
             showToast(`Follow up: ${clientName}`);
-        }, 60000);
+        }, 6000);
     }
 });
 
