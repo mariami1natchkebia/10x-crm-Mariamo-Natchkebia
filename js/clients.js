@@ -46,6 +46,10 @@ function loadClientsOnStartup(limit = null) {
             <td>${client.company}</td>
             <td><span class="badge">${client.status}</span></td>
             <td>${formattedDate}</td>
+            <td>
+                <button class="details-btn" data-id="${client.id}">Details</button>
+                <button class="delete-btn" data-id="${client.id}">Delete</button>
+            </td>
         `;
 
         tableBody.appendChild(newRow);

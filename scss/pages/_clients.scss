@@ -22,7 +22,7 @@
 
 .add-client-btn {
     background-color: #1e293b;
-    color: #ffffff;
+    color: var(--bg-main);
     border: none;
     padding: 1rem 2rem;
     font-size: map-get(v.$font-size, subtitle);
@@ -73,7 +73,7 @@
 
 .chip.active {
     background-color: #1e293b;
-    color: #ffffff;
+    color: var(--bg-main);
 }
 
 .sort-box select {
@@ -106,7 +106,7 @@
 }
 
 .modal-content {
-    background-color: #ffffff;
+    background-color: var(--bg-main);
     padding: 2.4rem;
     border-radius: 0.8rem;
     width: 100%;
@@ -170,14 +170,14 @@
 .form-group input:focus,
 .form-group select:focus {
     border-color: var(--button-primary);
-    background-color: #ffffff;
+    background-color: var(--bg-main);
 }
 
 .save-client-btn {
     width: 100%;
     padding: 1.2rem;
     background-color: var(--button-primary);
-    color: #ffffff;
+    color: var(--bg-main);
     border: none;
     border-radius: 0.6rem;
     font-size: map-get(v.$font-size, paragraph);
@@ -196,7 +196,7 @@
     position: fixed;
     bottom: 1.25rem;
     right: 1.25rem;
-    background-color: #10B981;
+    background-color: var(--success);
     color: var(--bg-main);
     padding: 2rem 2rem;
     border-radius: 0.375rem;
@@ -209,4 +209,33 @@
 .toast-message.show {
     opacity: 1;
     visibility: visible;
+}
+
+.clients-table {
+    td {
+        button {
+            padding: 0.4rem 0.8rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: opacity 0.2s ease;
+
+            &:hover {
+                opacity: 0.85;
+            }
+        }
+
+        .details-btn {
+            background-color: #e0e0e0;
+            color: #333333;
+            margin-right: 0.5rem;
+        }
+
+        .delete-btn {
+            background-color: #ff4d4d;
+            color: var(--bg-main);
+        }
+    }
 }
