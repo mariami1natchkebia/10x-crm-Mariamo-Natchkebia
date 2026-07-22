@@ -72,13 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener("DOMContentLoaded", () => {
     const clients = JSON.parse(localStorage.getItem("crm_clients")) || [];
 
-    // Total Clients
+    // total clients
     const totalClientsEl = document.getElementById("totalClients");
     if (totalClientsEl) {
         totalClientsEl.textContent = clients.length;
     }
 
-    // Active Deals (არც Won და არც Lost)
+    // active deals
     const activeDealsEl = document.getElementById("activeDeals");
     if (activeDealsEl) {
         const activeDealsCount = clients.filter(client => 
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
         activeDealsEl.textContent = activeDealsCount; 
     }
 
-    // Won Revenue
+    // won revenue
     const wonRevenueEl = document.getElementById("wonRevenue");
     if (wonRevenueEl) {
         const totalWonRevenue = clients
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         wonRevenueEl.textContent = `$${totalWonRevenue.toLocaleString()}`;
     }
 
-    // New This Week (ზუსტი ფორმულა მოთხოვნიდან)
+    // new this week
     const newThisWeekEl = document.getElementById("newThisWeek");
     if (newThisWeekEl) {
         const newClientsCount = clients.filter(client => {

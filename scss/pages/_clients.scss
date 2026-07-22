@@ -5,6 +5,7 @@
     width: 100%;
     max-width: 120rem;
     margin: 0 auto;
+    padding-top: 8rem;
 }
 
 .clients-header {
@@ -362,30 +363,162 @@
 }
 
 .clients-table {
-    td {
-        button {
-            padding: 0.4rem 0.8rem;
-            border: none;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: opacity 0.2s ease;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
 
-            &:hover {
-                opacity: 0.85;
-            }
+    th, td {
+        &:nth-child(1) {
+            width: 55%;
         }
-
-        .details-btn {
-            background-color: #e0e0e0;
-            color: #333333;
-            margin-right: 0.5rem;
+        &:nth-child(2) {
+            width: 25%;
         }
-
-        .delete-btn {
-            background-color: #ff4d4d;
-            color: var(--bg-main);
+        &:nth-child(3) {
+            width: 20%;
+            text-align: right;
         }
     }
+}
+
+.clients-table thead tr {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+
+}
+
+.clients-table thead th {
+    font-size: map-get(v.$font-size, subtitle);
+    font-weight: map-get(v.$font-weight, semibold);
+    color: var(--text-secondary);
+    padding: 0 1.6rem 0.8rem 1.6rem;
+    border: none;
+}
+
+.clients-table tr {
+    background-color: var(--bg-main);
+    border: 1px solid var(--button-secondary);
+    border-radius: 1.2rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        border-color: var(--inactive);
+    }
+}
+
+.clients-table td {
+    padding: 1.6rem;
+    vertical-align: middle;
+    
+    &:first-child {
+        border-top-left-radius: 1.2rem;
+        border-bottom-left-radius: 1.2rem;
+    }
+
+    &:last-child {
+        border-top-right-radius: 1.2rem;
+        border-bottom-right-radius: 1.2rem;
+    }
+}
+
+.client-info-cell {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+}
+
+.client-avatar {
+    width: 4.8rem;
+    height: 4.8rem;
+    background-color: var(--button-primary);
+    color: var(--active);
+    font-weight: map-get(v.$font-weight, bold);
+    font-size: map-get(v.$font-size, paragraph);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.client-details-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.client-name {
+    font-size: map-get(v.$font-size, paragraph);
+    font-weight: map-get(v.$font-weight, bold);
+    color: var(--text-primary);
+}
+
+.client-subtext {
+    font-size: map-get(v.$font-size, caption);
+    color: var(--text-secondary);
+}
+
+.client-deal {
+    font-size: map-get(v.$font-size, caption);
+    font-weight: map-get(v.$font-weight, bold);
+    color: var(--success);
+    margin-top: 0.2rem;
+}
+
+.table-status-select {
+    padding: 0.8rem 1.4rem;
+    border: 1px solid var(--button-secondary);
+    border-radius: 2rem;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-size: map-get(v.$font-size, caption);
+    font-weight: map-get(v.$font-weight, medium);
+    cursor: pointer;
+    outline: none;
+}
+
+.table-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.6rem;
+}
+
+.delete-btn {
+    background-color: var(--error);
+    color: var(--active);
+    border: 1px solid var(--error);
+    padding: 0.8rem 1.6rem;
+    border-radius: 0.8rem;
+    font-weight: map-get(v.$font-weight, semibold);
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}
+.details-btn {
+    background-color: var(--button-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--button-secondary);
+    padding: 0.8rem 1.6rem;
+    border-radius: 0.8rem;
+    font-weight: map-get(v.$font-weight, semibold);
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+.empty-message {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 2rem;
+    font-size: map-get(v.$font-size, paragraph);
 }

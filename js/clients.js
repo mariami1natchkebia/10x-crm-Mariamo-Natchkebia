@@ -150,7 +150,7 @@ if (addClientForm) {
 
         //checks mail and send error messages
         const existingClients = JSON.parse(localStorage.getItem('crm_clients')) || [];
-        if (existingClients.some(c => c.email && c.email.toLowerCase() === email.toLowerCase())) {
+        if (existingClients.some(client => client.email && c.email.toLowerCase() === email.toLowerCase())) {
             showToast("A client with this email already exists");
             return;
         }
@@ -411,43 +411,56 @@ function filterAndRenderClients(limit = null) {
         visibleClients = visibleClients.slice(0, limit);
     }
 
-    const tableBody = document.querySelector('.clients-table tbody');
-    if (!tableBody) return;
+    // ვუძახებთ ჩვენს showClients ფუნქციას, რომელიც ახალ HTML სტრუქტურას აწყობს
+    showClients(visibleClients);
+}
 
-    tableBody.innerHTML = '';
+function createClientRowHTML(client, initials) {
+    return `
+        <td>
+            <div class="client-info-cell">
+                <div class="client-avatar">${initials}</div>
+                <div class="client-details-text">
+                    <span class="client-name">${client.name}</span>
+                    <span class="client-subtext">${client.company || 'N/A'} · ${client.email}</span>
+                    <span class="client-deal">$${Number(client.dealValue || 0).toLocaleString()}</span>
+                </div>
+            </div>
+        </td>
+        <td>
+            <select class="table-status-select" data-id="${client.id}">
+                <option value="Lead" ${client.status === 'Lead' ? 'selected' : ''}>Lead</option>
+                <option value="Contacted" ${client.status === 'Contacted' ? 'selected' : ''}>Contacted</option>
+                <option value="Won" ${client.status === 'Won' ? 'selected' : ''}>Won</option>
+                <option value="Lost" ${client.status === 'Lost' ? 'selected' : ''}>Lost</option>
+            </select>
+        </td>
+        <td>
+            <div class="table-actions">
+                <button class="details-btn" data-id="${client.id}">Details</button>
+                <button class="delete-btn" data-id="${client.id}">Delete</button>
+            </div>
+        </td>
+    `;
+}
 
-    if (visibleClients.length === 0) {
-        tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center;">No clients found</td></tr>`;
+function showClients(list) {
+    const tbody = document.getElementById("clientsTableBody");
+    if (!tbody) return;
+    
+    tbody.innerHTML = "";
+
+    if (list.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="3" class="empty-message">No clients found</td></tr>`;
         return;
     }
 
-    visibleClients.forEach((client, index) => {
-        const formattedDate = client.createdAt ? new Date(client.createdAt).toLocaleDateString('en-US', {
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric'
-        }) : 'N/A';
+    list.forEach((client) => {
+        const initials = client.name ? client.name.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2) : "CL";
+        
+        const tr = document.createElement("tr");
+        tr.innerHTML = createClientRowHTML(client, initials);
 
-        const newRow = document.createElement('tr');
-        newRow.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${client.name || ''}</td>
-            <td>${client.company || ''}</td>
-            <td><span class="badge">${client.status || ''}</span></td>
-            <td>${formattedDate}</td>
-            <td>
-                <button class="details-btn" data-id="${client.id}">Details</button>
-                <button class="delete-btn" data-id="${client.id}">Delete</button>
-            </td>
-        `;
-        tableBody.appendChild(newRow);
+        tbody.appendChild(tr);
     });
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    if (!localStorage.getItem('crm_clients') || JSON.parse(localStorage.getItem('crm_clients')).length === 0) {
-        loadUsersFromApi();
-    } else {
-        loadClientsOnStartup();
-    }
-});
