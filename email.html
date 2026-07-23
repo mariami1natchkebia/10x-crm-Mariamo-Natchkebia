@@ -114,17 +114,16 @@
                 </div>
             </section>
             <article class="panel clients-card">
-                <h2 class="card-title">Recent Emails</h2>
+                <h2 class="card-title">Inbox Messages</h2>
                 <div class="table-responsive">
                     <table class="clients-table">
                         <thead>
                             <tr>
-                                <th>Client</th>
-                                <th>Status</th>
+                                <th>Sender / Message</th>
+                                <th>Action / Status</th>
                             </tr>
                         </thead>
                         <tbody id="clientsTableBody">
-
                         </tbody>
                     </table>
                 </div>
@@ -141,42 +140,25 @@
                         </svg>
                     </button>
                 </div>
-                <form id="addClientForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" id="clientName" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" id="clientEmail" required>
-                        </div>
+               <form id="addClientForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>To (Email)</label>
+                        <input type="email" id="clientEmail" required>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Phone</label>
-                            <input type="text" id="clientPhone">
-                        </div>
-                        <div class="form-group">
-                            <label>Company</label>
-                            <input type="text" id="clientCompany">
-                        </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" id="clientName" required>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Deal Value</label>
-                            <input type="number" id="clientDealValue" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Status</label>
-                            <select id="clientStatus">
-                                <option value="Lead">Read</option>
-                                <option value="Contacted">Unread</option>
-                            </select>
-                        </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea id="clientPhone" placeholder="Write your message here..."></textarea>
                     </div>
-                    <button type="submit" class="save-client-btn">Save Client</button>
-                </form>
+                </div>
+                <button type="submit" class="save-client-btn">Send</button>
+            </form>
             </div>
         </div>
     </main>
@@ -215,7 +197,7 @@
             </svg>
         </button>
     </div>
-</div>
+    </div>
     <div id="toastMessage" class="toast-message">Client added  successfully!</div>
 
     <footer>
