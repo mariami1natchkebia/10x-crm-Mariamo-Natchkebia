@@ -41,3 +41,22 @@
     margin-top: 0.4rem;
     margin-bottom: 0.8rem;
 }
+
+@media (max-width: 1200px) {
+    .edit-wrapper {
+        flex-direction: column;
+        gap: 3rem;
+        align-items: center;
+    }
+}
+
+@media (max-width: 700px) {
+    .editProfile, .editPassword {
+        width: 100%;
+        padding: 1.5rem;
+
+        input {
+            width: 100%;
+        }
+    }
+}

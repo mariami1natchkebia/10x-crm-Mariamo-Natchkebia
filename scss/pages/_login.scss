@@ -154,6 +154,7 @@ input {
 .forgot-password, .signup {
     color: var(--text-primary);
     font-size: map.get(v.$font-size, subtitle);
+    font-weight: map.get(v.$font-weight, bold);
     cursor: pointer;
     margin-bottom: 1rem;
 }
@@ -191,15 +192,13 @@ input {
 
 
 //responsive styles for login page
-@media (max-width: v.$bp-desktop) {
+@media (max-width: 1200px) {
     body {
         padding: 1rem;
     }
 
     .navbar {
-        padding: 1rem 0.5rem;
-        flex-direction: column;
-        gap: 1.5rem;
+        display: none;
     }
 
     .logo {
@@ -229,5 +228,44 @@ input {
     .btn-login, .btn-signup {
         padding: 0.5rem 1rem; 
         font-size: 0.85rem; 
+    }
+
+    .section-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-main {
+        background-color: var(--bg-main);
+        position: static;
+        width: 90%;
+        max-width: 46rem;
+        margin: 2rem auto;
+        padding: 2.5rem;
+        right: auto;
+        top: auto;
+        transform: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .login-main {
+        width: 100%;
+        padding: 1.8rem;
+        margin: 1.5rem auto;
+    }
+
+    .login-title {
+        font-size: map.get(v.$font-size, subtitle);
+    }
+
+    .login {
+        row-gap: 1.2rem;
+    }
+
+    .rememberme label {
+        font-size: 0.8rem;
     }
 }
