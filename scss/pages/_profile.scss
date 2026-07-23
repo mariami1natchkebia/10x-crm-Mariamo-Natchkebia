@@ -21,12 +21,12 @@
 .editProfile, .editPassword {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1rem;
     border: 2px solid #000000;
     border-radius: 0.8rem;
     padding: 2rem;
-
-    input {
+    width: 28rem;
+        input {
             width: 24rem;
         }
         h3 {
@@ -34,9 +34,10 @@
         }
 }
 
-// .error-message {
-//     color: var(--error);
-//     font-size: map-get(v.$font-size, caption);
-//     margin: -1.5rem 0 0 0;
-//     min-height: 1.6rem;
-// }
+.error-message {
+    display: none;
+    color: var(--error);
+    font-size: map-get(v.$font-size, caption);
+    margin-top: 0.4rem;
+    margin-bottom: 0.8rem;
+}

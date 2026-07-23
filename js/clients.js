@@ -421,7 +421,6 @@ function filterAndRenderClients(limit = null) {
         visibleClients = visibleClients.slice(0, limit);
     }
 
-    // ვუძახებთ ჩვენს showClients ფუნქციას, რომელიც ახალ HTML სტრუქტურას აწყობს
     showClients(visibleClients);
 }
 

@@ -104,8 +104,9 @@
                 <form class="editPassword">
                     <h3>Edit Password</h3>
                     <input type="password" name="currentPassword" placeholder="Current Password">
+                    <p id="currentPasswordError" class="error-message"></p>
                     <input type="password" name="newPassword" placeholder="New Password">
-                    <p id="passwordError" class="error-message"></p>
+                    <p id="newPasswordError" class="error-message"></p>
                     <input type="password" name="confirmPassword" placeholder="Confirm New Password">
                     <p id="confirmError" class="error-message"></p>
                     <button class="login-button" type="submit">Change Password</button>
@@ -113,6 +114,8 @@
             </div>
         </section>
     </main>
+
+    <div id="toastMessage" class="toast-message"></div>
 
     <footer>
         <p>
@@ -125,5 +128,6 @@
     <script src="js/darkmode.js"></script>
     <script src="./js/profile.js"></script>
     <script src="./js/guard.js"></script>
+    <script src="./js/clients.js"></script>
 </body>
 </html>

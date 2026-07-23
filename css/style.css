@@ -1082,16 +1082,25 @@ footer {
 .editProfile, .editPassword {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1rem;
   border: 2px solid #000000;
   border-radius: 0.8rem;
   padding: 2rem;
+  width: 28rem;
 }
 .editProfile input, .editPassword input {
   width: 24rem;
 }
 .editProfile h3, .editPassword h3 {
   font-size: clamp(1.162rem, 1.095rem + 0.276vw, 1.4rem);
+}
+
+.error-message {
+  display: none;
+  color: var(--error);
+  font-size: clamp(0.996rem, 0.938rem + 0.236vw, 1.2rem);
+  margin-top: 0.4rem;
+  margin-bottom: 0.8rem;
 }
 
 /*# sourceMappingURL=style.css.map */
