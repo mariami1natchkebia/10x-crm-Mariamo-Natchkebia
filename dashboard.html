@@ -112,46 +112,67 @@
         </section>
 
         <section class="dashboard-grid">
-            <article class="panel pipeline-card">
-                <h2 class="card-title">Pipeline Overview</h2>
-                <div class="pipeline-item">
-                    <div class="pipeline-info">
-                        <span>Lead</span>
-                        <span id="leadCount">0</span>
+            <div class="left-pipeline"> 
+                <article class="panel pipeline-card">
+                    <h2 class="card-title">Pipeline Overview</h2>
+                    <div class="pipeline-item">
+                        <div class="pipeline-info">
+                            <span>Lead</span>
+                            <span id="leadCount">0</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="leadProgress"></div>
+                        </div>
                     </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="leadProgress"></div>
+                    <div class="pipeline-item">
+                        <div class="pipeline-info">
+                            <span>Contacted</span>
+                            <span id="contactedCount">0</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="contactedProgress"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="pipeline-item">
-                    <div class="pipeline-info">
-                        <span>Contacted</span>
-                        <span id="contactedCount">0</span>
+                    <div class="pipeline-item">
+                        <div class="pipeline-info">
+                            <span>Won</span>
+                            <span id="wonCount">0</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="wonProgress"></div>
+                        </div>
                     </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="contactedProgress"></div>
+                    <div class="pipeline-item">
+                        <div class="pipeline-info">
+                            <span>Lost</span>
+                            <span id="lostCount">0</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="lostProgress"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="pipeline-item">
-                    <div class="pipeline-info">
-                        <span>Won</span>
-                        <span id="wonCount">0</span>
+                </article>
+                <article class="panel pipeline-card">
+                    <h2 class="card-title">Tasks</h2>
+                    <div class="chart-wrapper">
+                        <div class="chart chart-completed">
+                            <div class="chart-inner">
+                                <p>Completed 100%</p>
+                            </div>
+                        </div>
+                        <div class="chart chart-progress">
+                            <div class="chart-inner">
+                                <p>In progress 80%</p>
+                            </div>
+                        </div>
+                        <div class="chart chart-pending">
+                            <div class="chart-inner">
+                                <p>Not started 20%</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="wonProgress"></div>
-                    </div>
-                </div>
-                <div class="pipeline-item">
-                    <div class="pipeline-info">
-                        <span>Lost</span>
-                        <span id="lostCount">0</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="lostProgress"></div>
-                    </div>
-                </div>
-            </article>
-
+                </article>
+            </div>    
             <article class="panel clients-card">
                 <h2 class="card-title">Recent Clients</h2>
                 <div class="table-responsive">

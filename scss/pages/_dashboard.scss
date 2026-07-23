@@ -170,6 +170,9 @@
     gap: 3rem;
     height: fit-content;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        &:hover {
+            transform: translateY(-2px);
+        }
 
     .stat-title {
         font-size: map.get(v.$font-size, caption);
@@ -191,6 +194,9 @@
     border-radius: 2rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     height: fit-content;
+        &:hover {
+            transform: translateY(-2px);
+        }
 }
 
 .dashboard-grid {
@@ -270,6 +276,67 @@
     font-size: map.get(v.$font-size, caption);
     font-weight: map.get(v.$font-weight, medium);
     display: inline-block;
+}
+
+.left-pipeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.chart-wrapper {
+    display: flex;
+    justify-content: space-around;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+}
+
+.chart {
+    position: relative;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+        &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .chart-inner {
+        position: absolute;
+        width: 7.5rem;
+        height: 7.5rem;
+        background-color: var(--bg-main);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    p {
+        text-align: center;
+        font-size: map.get(v.$font-size, caption);
+        font-weight: map.get(v.$font-weight, medium);
+        color: var(--text-secondary);
+        padding: 0 0.5rem;
+    }
+
+    &.chart-completed {
+        background: conic-gradient(#33705c 100%, rgba(0, 0, 0, 0.06) 100% 360deg);
+    }
+
+    &.chart-progress {
+        background: conic-gradient(#3b82f6 80%, rgba(0, 0, 0, 0.06) 80% 360deg);
+    }
+
+    &.chart-pending {
+        background: conic-gradient(#df96ff 20%, rgba(0, 0, 0, 0.06) 20% 360deg);
+    }
 }
 
 footer {
