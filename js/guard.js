@@ -1,6 +1,6 @@
 //this is a function to check authorization
 function checkAuth() {
-    const session = localStorage.getItem("crm_session");
+    const session = localStorage.getItem("crm_session") || sessionStorage.getItem("crm_session");
     const currentPage = window.location.pathname;
 
     const isPublicPage = currentPage.includes("index.html") || currentPage.endsWith("/") || currentPage.includes("signup.html");
@@ -25,6 +25,7 @@ if (logoutBtn) {
     logoutBtn.addEventListener("click", (e) => {
         e.preventDefault();
         localStorage.removeItem("crm_session");
+        sessionStorage.removeItem("crm_session");
         window.location.href = "index.html";
     });
 }

@@ -180,7 +180,7 @@ if (addClientForm) {
             createdAt: new Date().toISOString()
         };
 
-        // sends the new client data to the server saves it to localStorage if successful and updates the table.
+        // sends the new client data to the server saves it to localStorage if successful and updates the table
 
         try {
             const response = await fetch(`${API_URL}/add`, {
@@ -200,7 +200,15 @@ if (addClientForm) {
                 loadClientsOnStartup();
                 showToast("Client added  successfully!");
             } else {
-                showToast("Failed to add client on server.");
+                // server responded but with an error status - still keep the client's data
+                // instead of silently discarding what they typed
+                newClientData.id = `local-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+                existingClients.unshift(newClientData);
+                localStorage.setItem('crm_clients', JSON.stringify(existingClients));
+
+                closeModal();
+                loadClientsOnStartup();
+                showToast("Client added locally (server rejected request).");
             }
         } catch (error) {
             console.error("Error:", error);
@@ -330,7 +338,7 @@ document.addEventListener('click', (e) => {
 
 
 function getCurrentUser() {
-    const sessionData = localStorage.getItem('crm_session');
+    const sessionData = localStorage.getItem('crm_session') || sessionStorage.getItem('crm_session');
     if (!sessionData) return null;
     let session;
     try {
@@ -389,6 +397,26 @@ if (sortSelect) {
         filterAndRenderClients();
     });
 }
+
+//this handles the status dropdown inside each client row
+document.addEventListener('change', (e) => {
+    if (e.target.classList.contains('table-status-select')) {
+        const clientId = e.target.getAttribute('data-id');
+        const newStatus = e.target.value;
+
+        let savedClients = JSON.parse(localStorage.getItem('crm_clients')) || [];
+        savedClients = savedClients.map(client => {
+            if (String(client.id) === String(clientId)) {
+                client.status = newStatus;
+            }
+            return client;
+        });
+        localStorage.setItem('crm_clients', JSON.stringify(savedClients));
+
+        showToast('Status updated');
+        filterAndRenderClients();
+    }
+});
 
 function getVisibleClients() {
     let clients = JSON.parse(localStorage.getItem('crm_clients')) || []; 

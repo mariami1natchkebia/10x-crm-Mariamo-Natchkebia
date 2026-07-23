@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //this fetches information from crm users and session
 function getCurrentUser() {
-    const sessionData = localStorage.getItem('crm_session');
+    const sessionData = localStorage.getItem('crm_session') || sessionStorage.getItem('crm_session');
     if (!sessionData) return null;
     let session;
     try {

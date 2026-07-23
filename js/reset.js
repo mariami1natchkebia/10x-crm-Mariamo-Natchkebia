@@ -1,5 +1,6 @@
 const resetForm = document.querySelector(".login");
 const resetEmail = document.querySelector ("#resetEmail");
+const successMessage = document.querySelector("#successMessage");
 
 if (resetForm) {
     resetForm.addEventListener("submit", (e) => {

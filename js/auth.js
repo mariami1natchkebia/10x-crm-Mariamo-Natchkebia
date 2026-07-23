@@ -67,7 +67,15 @@ loginForm.addEventListener("submit", (e) => {
             email: validUser.email,
             loggedIn: true
         };
-        localStorage.setItem("crm_session", JSON.stringify(session));
+
+        if (rmCheck.checked) {
+            localStorage.setItem("crm_session", JSON.stringify(session));
+            sessionStorage.removeItem("crm_session");
+        } else {
+            sessionStorage.setItem("crm_session", JSON.stringify(session));
+            localStorage.removeItem("crm_session");
+        }
+
         window.location.href = "dashboard.html";
     } else {
         errorMessage.textContent = "Invalid email or password";

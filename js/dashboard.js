@@ -50,7 +50,6 @@ if (tableBody) {
     });
 }
 
-//resolves the full user record for the current session (crm_session is just a pointer)
 function getCurrentUser() {
     const sessionData = localStorage.getItem('crm_session');
     if (!sessionData) return null;
