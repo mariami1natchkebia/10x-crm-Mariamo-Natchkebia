@@ -176,6 +176,18 @@ input {
     display: none;
 }
 
+.rememberme{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: fit-content;
+        label {
+            white-space: nowrap;
+            font-size: map.get(v.$font-size, subtitle);
+
+        }
+}
+
 
 
 //responsive styles for login page

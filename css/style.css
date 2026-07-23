@@ -282,6 +282,17 @@ input {
   display: none;
 }
 
+.rememberme {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: fit-content;
+}
+.rememberme label {
+  white-space: nowrap;
+  font-size: clamp(1.162rem, 1.095rem + 0.276vw, 1.4rem);
+}
+
 @media (max-width: 1200px) {
   body {
     padding: 1rem;

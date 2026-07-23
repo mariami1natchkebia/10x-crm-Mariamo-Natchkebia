@@ -2,6 +2,22 @@ const loginForm = document.querySelector(".login");
 const emailInput = document.querySelector("#emailInput");
 const passwordInput = document.querySelector("#passwordInput");
 const errorMessage = document.querySelector("#errorMessage");
+const rmCheck = document.querySelector("#rememberMe");
+
+
+//checks local storage
+const savedEmail = localStorage.getItem("email") || sessionStorage.getItem("email");
+const savedPass = localStorage.getItem("password") || sessionStorage.getItem("password");
+
+if (savedEmail && savedPass) {
+    rmCheck.checked = true;
+    passwordInput.value = savedPass;
+    emailInput.value = savedEmail;
+} else {
+    rmCheck.checked = false;
+    passwordInput.value = "";
+    emailInput.value = "";
+}
 
 loginForm.addEventListener("submit", (e) => {
     e.preventDefault(); 
@@ -29,6 +45,23 @@ loginForm.addEventListener("submit", (e) => {
 
     if (validUser) {
         errorMessage.style.display = "none";
+        
+        // function for remember user
+        if (rmCheck.checked && emailInput.value !== "" && passwordInput.value !== "") {
+            localStorage.setItem("email", emailInput.value);
+            localStorage.setItem("password", passwordInput.value);
+            localStorage.setItem("checkbox", "true");
+
+            sessionStorage.clear();
+        } else {
+            sessionStorage.setItem("email", emailInput.value);
+            sessionStorage.setItem("password", passwordInput.value);
+            
+            localStorage.removeItem("email");
+            localStorage.removeItem("password");
+            localStorage.removeItem("checkbox");
+        }
+
         const session = {
             userId: validUser.id,
             email: validUser.email,
