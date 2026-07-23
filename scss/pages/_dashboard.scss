@@ -11,7 +11,7 @@
     grid-template-columns: 24rem 1fr;
     grid-template-rows: auto 1fr auto;
     min-height: 100vh;
-    // overflow: hidden;
+    overflow-x: hidden;
     background-color: #efefef;
 
 
@@ -69,6 +69,12 @@
     justify-content: flex-end;
     padding: 0 3rem;
 }
+
+.right-side-header {
+    display: flex;
+    margin-left: auto;
+}
+
 .main-aside {
     grid-area: aside;
     width: 24rem;
@@ -159,7 +165,7 @@
     border: none;
     border-radius: 0.8rem;
     padding: 0.8rem 1.2rem;
-    margin: 1rem;
+    margin: 2rem 1rem;
     font-size: map.get(v.$font-size, paragraph);
     font-weight: map.get(v.$font-weight, medium);
     cursor: pointer;
