@@ -31,7 +31,6 @@ async function loadUsersFromApi() {
         const response = await fetch('https://dummyjson.com/users');
         const data = await response.json();
         
-        // Transform API users to match your CRM client structure if needed
         const apiClients = data.users.map(user => ({
             id: user.id,
             name: `${user.firstName} ${user.lastName}`,
@@ -88,10 +87,16 @@ document.addEventListener('click', (e) => {
     }
 });
 
-//this slices only recent 5 clients
+// //this slices only recent 5 clients
 document.addEventListener('DOMContentLoaded', () => {
-    const isDashboard = window.location.pathname.includes('dashboard');
-    loadClientsOnStartup(isDashboard ? 5 : null); 
+    
+    const savedClients = localStorage.getItem('crm_clients');
+    if (!savedClients) {
+        loadUsersFromApi();
+    } else {
+        const isDashboard = window.location.pathname.includes('dashboard');
+        loadClientsOnStartup(isDashboard ? 5 : null);
+    }
 });
 
 
