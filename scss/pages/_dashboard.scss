@@ -135,7 +135,7 @@
     padding: 1.5rem;
     gap: 6rem;
     align-items: start;
-    align-content: center;
+    align-content: start;
     margin-top: 6rem;
 
 }
@@ -190,6 +190,7 @@
     background-color: #d5c3ff;
     border-radius: 2rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    height: fit-content;
 }
 
 .dashboard-grid {
