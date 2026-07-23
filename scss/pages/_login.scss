@@ -18,18 +18,18 @@ body {
 
 //navbar styles start here
 
-.logo {
-    width: 10rem;
-    border-radius: 0.8rem;
-    height: auto;
-    display: block;
-    margin-bottom: 0;
-}
+// .logo {
+//     width: 10rem;
+//     border-radius: 0.8rem;
+//     height: auto;
+//     display: block;
+//     margin-bottom: 0;
+// }
 
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     width: 100%;
     padding: 0.8rem 3rem;
