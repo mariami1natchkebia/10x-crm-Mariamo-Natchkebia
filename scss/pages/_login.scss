@@ -6,7 +6,6 @@
 body {
     min-height: 100vh;
     background-color: var(--bg-main);
-    padding: 1rem;
 }
 
 .section-wrapper {
@@ -68,7 +67,7 @@ body {
 
 .btn-login {
     padding: 0.6rem 1.5rem;
-    border: 1px solid #cbd5e0;
+    border: 1px solid var(--border-color);
     border-radius: 0.8rem;
     color: var(--text-primary);
     font-size: map.get(v.$font-size, subtitle);
@@ -105,7 +104,7 @@ body {
     top: 40%;
     transform: translateY(-50%);
     border-radius: 0.8rem;
-    box-shadow: 0px 5px 10px 0px rgba(0, 24, 129, 0.674);
+    box-shadow: 0px 5px 10px 0px color-mix(in srgb, var(--button-primary) 40%, transparent);
 }
 
 .login-title {
@@ -131,7 +130,7 @@ body {
     font-size: map.get(v.$font-size, paragraph);
     font-weight: map.get(v.$font-weight, medium);
     cursor: pointer;
-    color: #ffffff;
+    color: var(--active);
 }
 
 .login-button:hover {
@@ -142,7 +141,7 @@ body {
 
 input {
     padding: 0.8rem;
-    border: 1px solid #000000;
+    border: 1px solid var(--border-color);
     border-radius: 0.8rem;
     font-size: map.get(v.$font-size, paragraph);
     width: 100%;
@@ -193,9 +192,6 @@ input {
 
 //responsive styles for login page
 @media (max-width: 1200px) {
-    body {
-        padding: 1rem;
-    }
 
     .navbar {
         display: none;

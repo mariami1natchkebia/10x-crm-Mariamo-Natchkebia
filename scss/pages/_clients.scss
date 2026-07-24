@@ -18,12 +18,12 @@
 .clients-title {
     font-size: map-get(v.$font-size, subtitle);
     font-weight: map-get(v.$font-weight, bold);
-    color: #1e293b;
+    color: var(--text-primary);
 }
 
 .add-client-btn {
-    background-color: #1e293b;
-    color: var(--bg-main);
+    background-color: var(--button-primary);
+    color: var(--text-primary);
     border: none;
     padding: 1rem 2rem;
     font-size: map-get(v.$font-size, subtitle);
@@ -32,7 +32,7 @@
     cursor: pointer;
     transition: background-color 0.2s;
         &:hover {
-            background-color: #334155;
+            background-color: color-mix(in srgb, var(--text-primary) 85%, var(--bg-main) 15%);
         }
 }
 
@@ -43,7 +43,7 @@
     align-items: center;
     justify-content: space-between;
     background-color: var(--bg-main);
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--border-color);
     border-radius: 1.2rem;
     padding: 1.6rem 2rem;
     gap: 1.5rem;
@@ -58,8 +58,8 @@
 }
 
 .chip {
-    background-color: #f1f5f9;
-    color: #475569;
+    background-color: var(--inactive);
+    color: var(--text-primary);
     border: none;
     padding: 0.8rem 1.6rem;
     font-size: map-get(v.$font-size, subtitle);
@@ -68,28 +68,28 @@
     cursor: pointer;
     transition: all 0.2s;
         &:hover {
-            background-color: #e2e8f0;
+            background-color: var(--border-color);
     }
 }
 
 .chip.active {
-    background-color: #1e293b;
-    color: var(--bg-main);
+    background-color: var(--active);
+    color: var(--text-primary);
 }
 
 .sort-box select {
     padding: 1rem 1.4rem;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--border-color);
     border-radius: 0.8rem;
     font-size: map-get(v.$font-size, subtitle);
     background-color: var(--bg-main);
-    color: #334155;
+    color: var(--text-primary);
     outline: none;
     cursor: pointer;
 }
 
 .sort-box select:focus {
-    border-color: #3b82f6;
+    border-color: var(--button-primary);
 }
 
 .modal-overlay {
@@ -122,7 +122,7 @@
         h2 {
             font-size: map-get(v.$font-size, heading);
             font-weight: map-get(v.$font-weight, semibold);
-            color: #111827;
+            color: var(--text-primary);
             margin: 0;
         }
 }
@@ -133,9 +133,9 @@
     font-size: map-get(v.$font-size, paragraph);
     font-weight: map-get(v.$font-weight, medium);
     cursor: pointer;
-    color: #6b7280;
+    color: var(--text-secondary);
      &:hover {
-        color: #111827;
+        color: var(--text-primary);
      }
 }
 
@@ -154,7 +154,7 @@
 .form-group label {
     font-size: map-get(v.$font-size, subtitle);
     font-weight: map-get(v.$font-weight, medium);
-    color: #374151;
+    color: var(--text-primary);
     margin-bottom: 0.6rem;
 }
 
@@ -163,10 +163,10 @@
     width: 100%;
     padding: 1rem;
     font-size: map-get(v.$font-size, paragraph);
-    border: 0.1rem solid #d1d5db;
+    border: 0.1rem solid var(--border-color);
     border-radius: 0.6rem;
     outline: none;
-    background-color: #f9fafb;
+    background-color: var(--bg-input);
 }
 
 .form-group input:focus,
@@ -179,7 +179,7 @@
     width: 100%;
     padding: 1.2rem;
     background-color: var(--button-primary);
-    color: var(--bg-main);
+    color: var(--text-primary);
     border: none;
     border-radius: 0.6rem;
     font-size: map-get(v.$font-size, paragraph);
@@ -199,7 +199,7 @@
     bottom: 1.25rem;
     right: 1.25rem;
     background-color: var(--success);
-    color: var(--bg-main);
+    color: var(--text-primary);
     padding: 2rem 2rem;
     border-radius: 0.375rem;
     z-index: 1;
@@ -219,7 +219,7 @@
     justify-content: space-between;
     gap: 4rem;
     position: relative;
-    color: var(--text-main, #111827);
+    color: var(--text-primary);
 
     .details-left {
         flex: 1;
@@ -231,17 +231,17 @@
             font-size: map-get(v.$font-size, heading);
             font-weight: map-get(v.$font-weight, semibold);
             margin-bottom: 0.5rem;
-            color: var(--text-main, #111827);
+            color: var(--text-primary);
         }
 
         p {
             font-size: map-get(v.$font-size, paragraph);
             font-weight: map-get(v.$font-weight, semibold);
             margin: 0;
-            color: #6b7280;
+            color: var(--text-secondary);
 
             span {
-                color: var(--text-main, #111827);
+                color: var(--text-primary);
                 font-weight: 400;
             }
         }
@@ -257,24 +257,24 @@
             font-size: map-get(v.$font-size, heading);
             font-weight: map-get(v.$font-weight, semibold);
             margin: 0;
-            color: var(--text-main, #111827);
+            color: var(--text-primary);
         }
 
         textarea {
             width: 100%;
             height: 11rem;
             padding: 1.2rem;
-            background-color: var(--bg-input, #f9fafb);
-            border: 0.1rem solid #d1d5db;
+            background-color: var(--bg-input);
+            border: 0.1rem solid var(--border-color);
             border-radius: 0.8rem;
-            color: var(--text-main, #111827);
+            color: var(--text-primary);
             outline: none;
             resize: none;
             font-size: map-get(v.$font-size, paragraph);
             font-weight: map-get(v.$font-weight, semibold);
 
             &::placeholder {
-                color: #9ca3af;
+                color: var(--text-secondary);
             }
         }
 
@@ -298,13 +298,13 @@
 
             .save-note-btn {
                 background-color: var(--button-primary);
-                color: var(--bg-main);
+                color: var(--text-primary);
             }
 
             .reminder-btn {
                 background-color: transparent;
-                border: 0.1rem solid #d1d5db;
-                color: var(--text-main, #111827);
+                border: 0.1rem solid var(--border-color);
+                color: var(--text-primary);
             }
         }
 
@@ -317,22 +317,22 @@
             padding-right: 0.4rem;
 
             .note-item {
-                background-color: var(--bg-input, #f9fafb);
+                background-color: var(--bg-input);
                 padding: 1.2rem;
                 border-radius: 0.8rem;
-                border: 0.1rem solid #d1d5db;
+                border: 0.1rem solid var(--border-color);
 
                 .note-date {
                     font-size: map-get(v.$font-size, subtitle);
                     font-weight: map-get(v.$font-weight, semibold);
-                    color: #6b7280;
+                    color: var(--text-secondary);
                     margin-bottom: 0.4rem;
                 }
 
                 .note-text {
                     font-size: map-get(v.$font-size, paragraph);
                     font-weight: map-get(v.$font-weight, semibold);
-                    color: var(--text-main, #111827);
+                    color: var(--text-primary);
                     margin: 0;
                     word-break: break-word;
                 }
@@ -346,13 +346,13 @@
         right: 2rem;
         background: none;
         border: none;
-        color: #6b7280;
+        color: var(--text-secondary);
         font-size: 2.2rem;
         cursor: pointer;
         transition: color 0.2s;
 
         &:hover {
-            color: #111827;
+            color: var(--text-primary);
         }
     }
 }
@@ -398,7 +398,7 @@
 
 .clients-table tr {
     background-color: var(--bg-main);
-    border: 1px solid var(--button-secondary);
+    border: 1px dashed var(--button-secondary);
     border-radius: 1.2rem;
     transition: all 0.2s ease;
     cursor: pointer;
@@ -472,7 +472,7 @@
     padding: 0.8rem 1.6rem;
     border: 1px solid var(--button-secondary);
     border-radius: 2rem;
-    background-color: var(--bg-main);
+    background-color: var(--button-secondary);
     color: var(--text-primary);
     font-size: map-get(v.$font-size, caption);
     font-weight: map-get(v.$font-weight, medium);
@@ -489,7 +489,7 @@
 
 .delete-btn {
     background-color: var(--error);
-    color: var(--active);
+    color: #ffffff;
     border: 1px solid var(--error);
     padding: 0.8rem 1.6rem;
     border-radius: 0.8rem;

@@ -1,31 +1,51 @@
 @use 'sass:map';
 
 :root {
-    --bg-main: #ffffff;
-    --bg-primary: #282828;
-    --bg-secondary: #202020;
-    --text-primary: #000000;
-    --text-secondary: #272727; 
-    --active: #FFFFFF; 
-    --inactive: #898989;
-    --error: #ED4337;
-    --success: #10B981;
-    --button-primary: #4e82f3;
-    --button-secondary: #9babce;
-    --card: #d5c3ff;
+    --bg-main: #f8fafc;
+    --card: #ededed;
+    --button-primary: #0ea5e9;
+    --error: #ef4444;
+    --success: #10b981;
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --border-color: #334155;
+    --tr-color: #eaeaea;
+ 
+    --text-soft: #94a3b8;
+    --active: #ffffff;
+    --inactive: var(--text-secondary);
+    --bg-secondary: var(--tr-color);
+    --primary: var(--button-primary);
+    --button-secondary: #e2e8f0;
+    --bg-input: #f9fafb;
+ 
+    --chart-completed: var(--success);
+    --chart-progress: var(--button-primary);
+    --chart-pending: #f59e0b;
 }
-
+ 
 .crm__theme {
-    --bg-main: #232323ec;
-    --text-primary: #929292;
-    --text-secondary: #ffffff; 
-    --active: #FFFFFF; 
-    --inactive: #898989;
-    --button-primary: #4e82f3;
-    --button-secondary: #9babce;
-    --error: #ED4337;
-    --success: #10B981;
-    --card: #29203e;
+    --bg-main: #000000;
+    --card: #222222;
+    --button-primary: #383c43;
+    --error: #f87171;
+    --success: #34d399;
+    --text-primary: #f8fafc;
+    --text-secondary: #7b7b7b;
+    --border-color: #989b9f;
+    --tr-color: #484c54;
+ 
+    --text-soft: #7c8ba0;
+    --active: #9e9e9e;
+    --inactive: #4d4d4d;
+    --bg-secondary: var(--tr-color);
+    --primary: var(--button-primary);
+    --button-secondary: #475569;
+    --bg-input: #1e293b;
+ 
+    --chart-completed: var(--success);
+    --chart-progress: var(--button-primary);
+    --chart-pending: #fbbf24;
 }
 
 //typography
