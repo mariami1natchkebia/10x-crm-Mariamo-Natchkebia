@@ -9,8 +9,8 @@
   --border-color: #334155;
   --tr-color: #eaeaea;
   --text-soft: #94a3b8;
-  --active: #ffffff;
-  --inactive: var(--text-secondary);
+  --active: #334155;
+  --inactive: #ededed;
   --bg-secondary: var(--tr-color);
   --primary: var(--button-primary);
   --button-secondary: #e2e8f0;
@@ -21,7 +21,7 @@
 }
 
 .crm__theme {
-  --bg-main: #000000;
+  --bg-main: #121210;
   --card: #222222;
   --button-primary: #383c43;
   --error: #f87171;
@@ -31,8 +31,8 @@
   --border-color: #989b9f;
   --tr-color: #484c54;
   --text-soft: #7c8ba0;
-  --active: #9e9e9e;
-  --inactive: #4d4d4d;
+  --active: #4d4d4d;
+  --inactive: #222222;
   --bg-secondary: var(--tr-color);
   --primary: var(--button-primary);
   --button-secondary: #475569;
@@ -89,7 +89,7 @@ body, button {
 }
 
 #theme-switch svg {
-  fill: var(--button-primary);
+  fill: #0ea5e9;
 }
 
 #theme-switch svg:last-child {
@@ -109,35 +109,36 @@ body, button {
   width: 100%;
   max-width: 30rem;
   display: flex;
+  align-items: center;
 }
 .search-box .search-icon {
   position: absolute;
   left: 1.4rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #94a3b8;
+  color: var(--text-secondary);
   pointer-events: none;
 }
 .search-box input {
   width: 100%;
   padding: 1rem 1.4rem 1rem 3.8rem;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--border-color);
   border-radius: 2rem;
   font-size: clamp(1.162rem, 1.095rem + 0.276vw, 1.4rem);
-  background-color: var --bg-main;
+  background-color: var(--bg-main);
   outline: none;
-  color: #334155;
+  color: var(--text-primary);
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .search-box input:hover {
-  border-color: #3b82f6;
+  border-color: var(--button-primary);
 }
 .search-box input:focus {
-  border-color: #3b82f6;
+  border-color: var(--button-primary);
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
 }
 .search-box input::placeholder {
-  color: #94a3b8;
+  color: var(--text-secondary);
 }
 
 body {
@@ -240,7 +241,7 @@ body {
 }
 
 .login-button {
-  background-color: var(--button-primary);
+  background-color: #0ea5e9;
   border: none;
   border-radius: 0.8rem;
   padding: 0.8rem 1.2rem;
@@ -248,7 +249,7 @@ body {
   font-size: 1.6rem;
   font-weight: 500;
   cursor: pointer;
-  color: var(--active);
+  color: var(--text-primary);
 }
 
 .login-button:hover {
@@ -285,8 +286,8 @@ input {
   display: none;
 }
 
-.successMessage {
-  color: var(--success);
+#successMessage {
+  color: #10b981;
   font-size: 1.6rem;
   display: none;
 }
@@ -410,7 +411,7 @@ input {
   width: 12rem;
   padding: 1.2rem;
   background-color: var(--button-primary);
-  color: var(--text-primary);
+  color: #ffffff;
 }
 
 .dashboard {
@@ -534,7 +535,7 @@ input {
   font-size: 1.6rem;
   font-weight: 500;
   cursor: pointer;
-  color: var(--text-primary);
+  color: #ffffff;
   text-align: center;
   width: auto;
 }
@@ -552,6 +553,12 @@ input {
 .welcome-clock {
   display: flex;
   justify-content: space-between;
+  padding: 2rem;
+  border: 2px solid var(--border-color);
+  border-radius: 0.8rem;
+  width: fit-content;
+  background-color: var(--card);
+  color: var(--text-primary);
 }
 
 #welcomeText {
@@ -590,7 +597,7 @@ input {
 .stat-card .stat-value {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -836,7 +843,7 @@ footer {
 
 .add-client-btn {
   background-color: var(--button-primary);
-  color: var(--text-primary);
+  color: #ffffff;
   border: none;
   padding: 1rem 2rem;
   font-size: clamp(1.162rem, 1.095rem + 0.276vw, 1.4rem);
@@ -885,7 +892,7 @@ footer {
 
 .chip.active {
   background-color: var(--active);
-  color: var(--text-primary);
+  color: #ffffff;
 }
 
 .sort-box select {
@@ -1022,6 +1029,7 @@ footer {
   background-color: var(--bg-main);
   padding: 3rem;
   border-radius: 1.2rem;
+  border: 2px solid var(--border-color);
   width: 100%;
   max-width: 85rem;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
@@ -1216,7 +1224,7 @@ footer {
 .client-avatar {
   width: 4.8rem;
   height: 4.8rem;
-  background-color: var(--button-primary);
+  background-color: #0ea5e9;
   color: var(--active);
   font-weight: 700;
   font-size: 1.6rem;
@@ -1421,17 +1429,18 @@ footer {
 .task-stat-card:hover {
   transform: translateY(-2px);
 }
-.task-stat-card.task-contracts {
+
+.task-contracts {
   background: var(--button-primary);
   color: var(--active);
 }
-.task-stat-card.task-contracts .card-header, .task-stat-card.task-contracts .card-body {
-  color: var(--active);
+.task-contracts .tasks-count {
+  color: #0ea5e9;
 }
-.task-stat-card.task-contracts .progress-bar {
+.task-contracts .progress-bar {
   background-color: rgba(255, 255, 255, 0.652);
 }
-.task-stat-card.task-contracts .progress-fill {
+.task-contracts .progress-fill {
   background-color: #ffffff;
 }
 
@@ -1454,7 +1463,7 @@ footer {
 .card-body .tasks-count {
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: #0ea5e9;
 }
 .task-stat-card.task-contracts .card-body .tasks-count {
   color: var(--active);
@@ -1471,15 +1480,14 @@ footer {
 .progress-bar {
   width: 100%;
   height: 1rem;
-  background-color: var(--inactive);
+  background-color: rgba(14, 164, 233, 0.3647058824);
   border-radius: 1rem;
   overflow: hidden;
   position: relative;
-  opacity: 0.2;
 }
 .progress-bar .progress-fill {
   height: 100%;
-  background-color: var(--button-primary);
+  background-color: #0ea5e9;
   border-radius: 1rem;
   transition: width 0.6s ease;
 }
@@ -1501,6 +1509,9 @@ footer {
   grid-template-columns: 1fr 1.6fr 1.2fr;
   gap: 1.5rem;
 }
+.contracts-grid svg {
+  color: var(--text-primary);
+}
 
 .dashboard-card {
   background-color: var(--card);
@@ -1521,6 +1532,9 @@ footer {
   border-bottom: 1px solid var(--inactive);
   opacity: 0.8;
   cursor: pointer;
+}
+.card-title-row svg {
+  color: var(--text-primary);
 }
 
 .card-title-row h3 {
@@ -1635,7 +1649,7 @@ footer {
 
 .checkbox-container input:checked ~ .checkmark {
   background-color: var(--button-primary);
-  border-color: var(--button-primary);
+  border-color: var(--text-primary);
 }
 
 .checkbox-container input:checked ~ .checkmark::after {
@@ -1645,7 +1659,7 @@ footer {
 .checkmark {
   width: 1.6rem;
   height: 1.6rem;
-  border: 1px solid var(--inactive);
+  border: 1px solid var(--text-primary);
   border-radius: 0.5rem;
   position: relative;
   display: inline-block;
@@ -1673,6 +1687,7 @@ footer {
   font-weight: 500;
   border-radius: 2rem;
   margin: 0;
+  color: var(--text-primary);
 }
 
 .status-waiting {
@@ -1686,8 +1701,8 @@ footer {
 }
 
 .status-hold {
-  background-color: color-mix(in srgb, var(--inactive) 15%, transparent);
-  color: var(--inactive);
+  background-color: color-mix(in srgb, var(--button-primary) 15%, transparent);
+  color: var(--text-primary);
 }
 
 /* Today's Meetings */

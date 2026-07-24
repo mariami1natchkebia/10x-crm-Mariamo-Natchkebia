@@ -25,7 +25,10 @@
             </label>
             <div class="right-side-header">
                 <div class="search-box">
-                    <svg class="search-icon" fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" id="search" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><line id="secondary" x1="21" y1="21" x2="15" y2="15" style="fill: none; stroke: rgb(44, 169, 188); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line><circle id="primary" cx="10" cy="10" r="7" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></circle></svg>
+                    <svg class="search-icon" width="20px" height="20px" viewBox="0 0 24 24" id="search" data-name="Line Color" xmlns="http://www.w3.org/2000/svg">
+                    <line id="secondary" x1="21" y1="21" x2="15" y2="15" style="fill: none; stroke: rgb(0 101 245); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line>
+                    <circle id="primary" cx="10" cy="10" r="7" style="fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></circle>
+                    </svg>
                     <input type="text" placeholder="Search...">
                 </div>
                 <button id="theme-switch">
@@ -95,84 +98,89 @@
 
 
     <main class="dashboard-content">
-        <section class="clients-container">
+    <section class="clients-container">
     
-            <div class="clients-header">
-                <h2 class="clients-title">Email</h2>
-                <button class="add-client-btn">Compose</button>
+        <div class="clients-header">
+            <h2 class="clients-title">Inbox</h2>
+            <button class="add-client-btn">Compose</button>
+        </div>
+
+        <section class="filters-panel">
+            <div class="search-box">
+                <svg class="search-icon" width="20px" height="20px" viewBox="0 0 24 24" id="search" data-name="Line Color" xmlns="http://www.w3.org/2000/svg">
+                    <line id="secondary" x1="21" y1="21" x2="15" y2="15" style="fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line>
+                    <circle id="primary" cx="10" cy="10" r="7" style="fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></circle>
+                </svg>
+                <input type="text" placeholder="Search mail...">
             </div>
 
-            <section class="filters-panel">
-                <div class="search-box">
-                    <svg class="search-icon" fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" id="search" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><line id="secondary" x1="21" y1="21" x2="15" y2="15" style="fill: none; stroke: rgb(44, 169, 188); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line><circle id="primary" cx="10" cy="10" r="7" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></circle></svg>
-                    <input type="text" placeholder="Search...">
-                </div>
+            <div class="filter-chips">
+                <button class="chip active">All</button>
+                <button class="chip">Unread</button>
+                <button class="chip">Drafts</button>
+                <button class="chip">Social</button>
+                <button class="chip">Spam</button>
+            </div>
 
-                <div class="filter-chips">
-                    <button class="chip active">All</button>
-                    <button class="chip">Unread</button>
-                    <button class="chip">Drafts</button>
-                    <button class="chip">Social</button>
-                    <button class="chip">Spam</button>
-                </div>
-
-                <div class="sort-box">
-                    <select>
-                        <option value="newest">Sort: Newest</option>
-                        <option value="oldest">Sort: Oldest</option>
-                        <option value="name">Sort: Name</option>
-                    </select>
-                </div>
-            </section>
-            <article class="panel clients-card">
-                <h2 class="card-title">Inbox Messages</h2>
-                <div class="table-responsive">
-                    <table class="clients-table">
-                        <thead>
-                            <tr>
-                                <th>Sender / Message</th>
-                                <th>Action / Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="clientsTableBody">
-                        </tbody>
-                    </table>
-                </div>
-            </article>
+            <div class="sort-box">
+                <select>
+                    <option value="newest">Sort: Newest</option>
+                    <option value="oldest">Sort: Oldest</option>
+                    <option value="name">Sort: Sender</option>
+                </select>
+            </div>
         </section>
-        <div class="modal-overlay" id="addClientModal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2>Add Client</h2>
-                    <button class="modal-close-btn">
-                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C21.5093 4.43821 21.8356 5.80655 21.9449 8" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
-                        </svg>
-                    </button>
-                </div>
-               <form id="addClientForm">
+
+        <article class="panel clients-card">
+            <h2 class="card-title">Messages</h2>
+            <div class="table-responsive">
+                <table class="clients-table">
+                    <thead>
+                        <tr>
+                            <th>Sender & Subject</th>
+                            <th>Date / Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="clientsTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </article>
+    </section>
+
+    <div class="modal-overlay" id="addClientModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>New Message</h2>
+                <button class="modal-close-btn">
+                    <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C21.5093 4.43821 21.8356 5.80655 21.9449 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+            <form id="addClientForm">
                 <div class="form-row">
                     <div class="form-group">
-                        <label>To (Email)</label>
-                        <input type="email" id="clientEmail" required>
+                        <label>To</label>
+                        <input type="email" id="clientEmail" placeholder="Recipient email" required>
                     </div>
                     <div class="form-group">
                         <label>Subject</label>
-                        <input type="text" id="clientName" required>
+                        <input type="text" id="clientName" placeholder="Subject" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea id="clientPhone" placeholder="Write your message here..."></textarea>
+                        <textarea id="clientPhone" rows="5" placeholder="Write your message here..."></textarea>
                     </div>
                 </div>
                 <button type="submit" class="save-client-btn">Send</button>
             </form>
-            </div>
         </div>
-    </main>
+    </div>
+</main>
     <div class="modal-overlay" id="clientDetailsModal">
     <div class="details-modal-content">
         <div class="details-left">

@@ -12,8 +12,8 @@
     --tr-color: #eaeaea;
  
     --text-soft: #94a3b8;
-    --active: #ffffff;
-    --inactive: var(--text-secondary);
+    --active: #334155; 
+    --inactive: #ededed;
     --bg-secondary: var(--tr-color);
     --primary: var(--button-primary);
     --button-secondary: #e2e8f0;
@@ -25,7 +25,7 @@
 }
  
 .crm__theme {
-    --bg-main: #000000;
+    --bg-main: #121210;
     --card: #222222;
     --button-primary: #383c43;
     --error: #f87171;
@@ -36,8 +36,8 @@
     --tr-color: #484c54;
  
     --text-soft: #7c8ba0;
-    --active: #9e9e9e;
-    --inactive: #4d4d4d;
+    --active: #4d4d4d;
+    --inactive: #222222;
     --bg-secondary: var(--tr-color);
     --primary: var(--button-primary);
     --button-secondary: #475569;
