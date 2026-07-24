@@ -4,8 +4,14 @@
 .editInformation {
     display: flex;
     flex-direction: column;
-    row-gap: 5rem;
+    row-gap: 3rem;
         
+}
+
+.edit-page {
+    border-radius: 0.8rem;
+    padding: 2rem;
+    border: 4px dashed var(--border-color);
 }
 
 .profile-page {
@@ -15,7 +21,7 @@
 
 .edit-wrapper {
     display: flex;
-    gap: 16rem;
+    gap: 10rem;
 }
 
 .editProfile, .editPassword {

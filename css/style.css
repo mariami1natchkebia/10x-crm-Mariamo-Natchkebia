@@ -546,7 +546,7 @@ input {
   gap: 6rem;
   align-items: start;
   align-content: start;
-  margin-top: 6rem;
+  margin-top: 8rem;
 }
 
 .welcome-clock {
@@ -846,7 +846,7 @@ footer {
   transition: background-color 0.2s;
 }
 .add-client-btn:hover {
-  background-color: color-mix(in srgb, var(--text-primary) 85%, var(--bg-main) 15%);
+  background-color: color-mix(in srgb, var(--button-primary) 85%, var(--bg-main) 15%);
 }
 
 .filters-panel {
@@ -1188,7 +1188,6 @@ footer {
   border: 1px dashed var(--button-secondary);
   border-radius: 1.2rem;
   transition: all 0.2s ease;
-  cursor: pointer;
 }
 .clients-table tr:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -1342,7 +1341,13 @@ footer {
 .editInformation {
   display: flex;
   flex-direction: column;
-  row-gap: 5rem;
+  row-gap: 3rem;
+}
+
+.edit-page {
+  border-radius: 0.8rem;
+  padding: 2rem;
+  border: 4px dashed var(--border-color);
 }
 
 .profile-page {
@@ -1352,7 +1357,7 @@ footer {
 
 .edit-wrapper {
   display: flex;
-  gap: 16rem;
+  gap: 10rem;
 }
 
 .editProfile, .editPassword {

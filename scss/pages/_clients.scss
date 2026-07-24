@@ -32,7 +32,7 @@
     cursor: pointer;
     transition: background-color 0.2s;
         &:hover {
-            background-color: color-mix(in srgb, var(--text-primary) 85%, var(--bg-main) 15%);
+            background-color: color-mix(in srgb, var(--button-primary) 85%, var(--bg-main) 15%);
         }
 }
 
@@ -401,8 +401,6 @@
     border: 1px dashed var(--button-secondary);
     border-radius: 1.2rem;
     transition: all 0.2s ease;
-    cursor: pointer;
-
     &:hover {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         border-color: var(--inactive);
